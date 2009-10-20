@@ -45,7 +45,7 @@
             print theme('imagecache', 'teasr', $img, '', 'Иллюстрация', array('class' => 'teaser'));
      ?>
 <?php
- print l($view->result[0]->node_revisions_teaser." <img src=\"themes/ost2/images/readmore.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));
+ print l($view->result[0]->node_revisions_teaser." <img src=\"themes/basic/css/images/readmore.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));
 
 // print_r($view->field['view_node']);
 // print_r($view);

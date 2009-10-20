@@ -22,4 +22,4 @@
 ?>
 <?php// print $output; ?>
 <!--<h4><?php print $row->node_title; ?></h4> -->
-<h2><?php print l($row->node_title, "node/".$row->nid, array('html' => 'TRUE')); ?></h2>
+<h4><?php print l($row->node_title, "node/".$row->nid, array('html' => 'TRUE')); ?></h4>

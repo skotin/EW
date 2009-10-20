@@ -230,3 +230,7 @@
     padding-right:30px;
     padding-left:15px;
 }
+
+#first-time {
+    display:none;
+}
