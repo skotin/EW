@@ -1,0 +1,48 @@
+# $Id: ru.po,v 1.2 2009/05/23 11:40:11 podarok Exp $
+msgid ""
+msgstr ""
+"Project-Id-Version: excerpt.module Russian Translation\n"
+"POT-Creation-Date: 2008-03-20 00:22+0100\n"
+"PO-Revision-Date: 2009-05-23 14:36+0300\n"
+"Last-Translator: Andriy Podanenko <podarok@ua.fm>\n"
+"Language-Team: uk <podarok@ua.fm>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: UKRAINE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: excerpt.module:38
+#: excerpt.info:0
+msgid "Excerpt"
+msgstr "Анонс"
+
+#: excerpt.module:43;57
+msgid "Teaser"
+msgstr "Анонс"
+
+#: excerpt.module:45
+msgid "Auto-generated"
+msgstr "Автоматический"
+
+#: excerpt.module:45
+msgid "Manual excerpt"
+msgstr "Ручной"
+
+#: excerpt.module:46
+msgid "Choose whether the node teaser must be generated automatically or manually entered by the author."
+msgstr "Выберите будет ли анонс генерироваться автоматически, либо вводиться вручную."
+
+#: excerpt.module:50
+msgid "Weight of Teaser field"
+msgstr "Вес поля Анонс"
+
+#: excerpt.module:62
+msgid "Enter an excerpt for this item. It will be shown on listing pages along with a <em>read more</em> link which leads to the full view. Leave empty to auto-generate one from the body."
+msgstr "Обычно, анонс используется для показа краткого содержимого материала в листингах. Оставьте поле пустым, чтобы сгенерировать анонс автоматически."
+
+#: excerpt.info:0
+msgid "Allows users to manually control the teaser for a node."
+msgstr "Позволяет пользователям самостоятельно управлять кратким содержанием материала."
+

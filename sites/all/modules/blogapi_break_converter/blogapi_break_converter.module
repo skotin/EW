@@ -1,0 +1,17 @@
+<?php
+// $Id: $
+
+/**
+* @file
+* Converts <!--extended--> to <!--break-->
+*/
+
+/**
+* Implements hook_nodeapi()
+*/
+function blogapi_break_converter_nodeapi(&$node, $op) {
+  if ($op == "blogapi new" || $op == "blogapi edit") {
+    $node->body=str_replace('<!--extended-->','<!--break-->',$node->body);
+  }
+}
+?>

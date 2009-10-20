@@ -1,0 +1,232 @@
+
+/** Layout
+---------------------------------
+*  Using a negative margin technique, adapted from ZEN. The page is loaded by this order:
+*  
+*  1. Header
+*  2. Content
+*  3. Navigation menus
+*  4. Sidebar Left
+*  5. Sideabr Right
+*	
+*/
+
+#page {
+	width: 960px; /* edit to change the width of the page */
+	margin: 0; /* remove 'auto' and the width to switch to a fluid width */
+    border:solid 5px #fff;
+}
+
+/** Sidebars width
+---------------------------------
+*  Changing the width of the sidebars is dead easy, just change the
+*  values below corresponding to the sidebar you want to modify.
+*  Make sure you keep negative values as negative values.
+*  For example, if I want to increase the width of the left sidebar
+*  to 300px, I would have to change each '190' to '300'.
+*/
+
+.two-sidebars .center,
+.sidebar-left .center {
+  margin-left: 220px;     /* LEFT value */
+}
+#sidebar-first {
+  width: 210px;           /* LEFT value */
+  margin-right: -210px;    /* negative LEFT value */
+}
+
+#sidebar-first .inner {
+    padding-left:5px;
+    padding-top:1.1em;
+}
+
+/*#sidebar-first .inner {*/
+    /*margin:5px;*/
+/*}*/
+.two-sidebars .center,
+.sidebar-right .center {
+  margin-right: 200px;    /* RIGHT value */
+}
+#sidebar-second {
+  width: 200px;           /* RIGHT value */
+}
+
+/** Columns inner
+---------------------------------
+*  You can change the padding inside the columns without changing the
+*  width of them by just usinbg the INNER div of each column
+*/
+
+.inner {                             
+	padding: 0px;                     
+}                                   
+
+/** Navigation styles
+---------------------------------
+*  The navigation is loaded after the content, so we need to make space
+*  for it, equal to its height, so if you change the height of the navigation,
+*  remember to adapt the margin top of the content and sidebars.
+*/
+
+.with-navigation #content,
+.with-navigation .sidebar {
+  margin-top: 40px;        /* Navigation Height */
+}
+#navigation {
+  height: 40px;            /* Navigation Height */
+}
+
+/** LAYOUT RULES
+---------------------------------
+*  do not change if you're not sure you know what you're doing
+*/
+
+#content {
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  padding: 0;
+}                                   
+.sidebar {                          
+  float: left;
+
+}                                   
+#sidebar-second {
+  float: right;
+}
+#navigation {                        
+  float: left;                       
+  margin-left: 0;
+  margin-right: -100%;
+  padding: 0;
+  width: 100%;
+}
+
+/* header */
+
+#header #header-region {
+  overflow: hidden;
+    padding:0;
+}
+
+#logo-title {
+    width:210px;
+    height:86px;
+    background:#15727a url(images/ewreview_logo.png) no-repeat  0 0;
+    float:left;
+    border-right:solid 5px #fff;
+    border-left: solid 5px #fff;
+    margin-left:-5px;
+}
+
+/*motto*/
+#block-block-18 {
+    position:absolute;
+    top: 0;
+    left:230px;
+    color: #888;
+    z-index:10;
+    font-style:italic;
+    font-size:0.85em;
+
+}
+/*menu*/
+#block-menu-primary-links {
+    background-color:#15727a;
+    height:50px;
+    border-bottom:solid 5px #fff;
+}
+
+
+
+#block-menu-primary-links .content li {
+  display: inline;
+  list-style:none;
+  border-right: 1px dotted #fff;
+  padding:0 4px 0 0;
+    text-align:center;
+
+}
+#block-menu-primary-links .content li.last {
+    border:0;
+}
+
+
+#block-menu-primary-links .menu {
+    padding-top:15px;
+    padding-left: 5px;
+}
+
+#block-menu-primary-links .content li a{
+    color: #fff;
+}
+
+#block-google_cse-0 h3{
+    display:none;
+}
+
+#block-google_cse-0 form {
+    margin:0;
+}
+
+#block-google_cse-0 input.form-submit {
+    font-size:0.85em;
+}
+
+#block-google_cse-0 input#edit-query {
+     font-size:0.85em;
+    background-image:none;
+}
+
+
+
+
+#block-google_cse-0 {
+    text-align:right;
+    background-color:#000;
+    margin:0 0 4px 0;
+    padding:5px;
+}
+
+#block-google_cse-0 .block-inner {
+    padding:0;
+    margin:0;
+}
+
+/* footer */
+
+#footer {
+  float: none;
+  clear: both;
+     background-color:#15727a;
+    color:#fff;
+    padding:5px;
+    text-align:center;
+    margin-top:4em;
+}
+
+#footer a {
+    color:#fff;
+    text-decoration:underline;
+}
+
+/* Layout Helpers */
+
+#header,
+#footer,
+#main #content .mission,
+#main #content .breadcrumb,
+#main #content .node {
+  clear: both;
+}
+
+
+#block-panels_mini-67 .content{
+    font-size:0.9em;
+    text-align:center;
+}
+
+#block-panels_mini-8 {
+    padding-right:30px;
+    padding-left:15px;
+}

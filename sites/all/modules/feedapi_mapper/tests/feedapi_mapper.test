@@ -1,0 +1,171 @@
+<?php
+// $Id: feedapi_mapper.test,v 1.2.2.7 2009/09/29 18:47:12 alexb Exp $
+
+require_once(drupal_get_path('module', 'feedapi_mapper') .'/tests/feedapi_mapper_test.inc');
+
+/**
+ * Class for testing feedapi_mapper.
+ */
+class FeedApiMapperBasicTestCase extends FeedApiMapperTestCase {
+
+  /**
+   * Drupal SimpleTest method: return metadata about the test.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('FeedAPI Mapper'),
+      'description' => t('Test basic FeedAPI Mapper function'),
+      'group' => t('FeedAPI Mapper'),
+    );
+  }
+
+  /**
+   * SimpleTest core method: code run before each and every test method.
+   */
+  function setUp() {
+    // Always call the setUp() function from the parent class.
+    @parent::setUp(
+      'feedapi',
+      'feedapi_node',
+      'parser_common_syndication',
+      'parser_simplepie',
+      'feedapi_mapper',
+      'ctools'
+    );
+
+    // Create users.
+    $this->admin_user = $this->drupalCreateUser(
+      array(
+        'administer content types',
+        'administer feedapi',
+        'administer nodes',
+        'administer site configuration',
+        'advanced feedapi options',
+        'create feed content',
+      )
+    );
+  }
+
+  function testCommonSyndicationParserMapping() {
+    $this->drupalLogin($this->admin_user);
+    $this->enableParsers(FALSE, TRUE);
+    $this->_testDefaultMapping();
+    $this->drupalLogout();
+  }
+
+  function testSimplePieParserMapping() {
+    $this->drupalLogin($this->admin_user);
+    $this->enableParsers(TRUE, FALSE);
+    $this->_testDefaultMapping();
+    $this->drupalLogout();
+  }
+
+  function testUserInterface() {
+    $this->drupalLogin($this->admin_user);
+    $this->enableParsers(TRUE, FALSE);
+    $options = array(
+      'typename' => 'story',
+      'filename' => 'drupal.xml',
+      'mappers' => array('node', 'feedapi_node'),
+      'mapping' => array(
+        serialize(array('options', 'original_url')) => serialize(array('feedapi_node', 'original_url')),
+        serialize(array('options', 'timestamp')) => serialize(array('node', 'created')),
+      ),
+    );
+    $feed_url = $this->setupFeed($options);
+
+    // Test unique UI.
+    $this->drupalGet($feed_url . '/map');
+    $this->assertText('N/A', 'Some of the targets do not support unique bit.');
+    $this->assertText('No', 'One of the targets supports unique bit.');
+    $this->assertNoText('Yes', 'None of the targets marked unique yet.');
+    // Toggle unique flag.
+    $this->clickLink('No');
+    $this->drupalGet($feed_url . '/map');
+    $this->assertText('Yes', 'One of the targets marked unique.');
+    // Check database.
+    $mapper_rows = db_result(db_query("SELECT COUNT(*) FROM {feedapi_mapper}"));
+    $unique = unserialize(db_result(db_query("SELECT unique_elements FROM {feedapi_mapper}")));
+    $this->assertTrue($mapper_rows == 1, 'The mapping table contains one entry');
+    $this->assertTrue($unique[serialize(array('options', 'original_url'))], 'The mapping table contains that the URL is unique');
+
+    // Delete mapping entries.
+    $mapper_entries = unserialize(db_result(db_query("SELECT mapping FROM {feedapi_mapper}")));
+    $this->assertTrue(count($mapper_entries == 4), 'Four mapping entries are defined.');
+    $this->clickLink('Delete');
+    $mapper_entries = unserialize(db_result(db_query("SELECT mapping FROM {feedapi_mapper}")));
+    $this->assertTrue(count($mapper_entries == 4), 'Three mapping entries are defined after one is deleted.');
+
+    // Test per content-type and per node mapping. Test scope handling.
+    $old_param = db_result(db_query("SELECT param FROM {feedapi_mapper}"));
+    $this->drupalGet($feed_url . '/map');
+    $this->assertText('This mapping applies to all content-types.', 'The mapping is per-content-type by default');
+    $this->drupalPost($feed_url. '/map/restrict', array(), 'Change to per-node');
+    $this->drupalGet($feed_url . '/map');
+    $this->assertText('This mapping is specific to this feed node', 'The mapping is now per-node');
+    $mapper_rows = db_result(db_query("SELECT COUNT(*) FROM {feedapi_mapper}"));
+    $this->assertTrue($mapper_rows == 2, 'The per-node row appeared in the database table');
+    $old_mapping_before = db_fetch_array(db_query("SELECT mapping, unique_elements FROM {feedapi_mapper} WHERE param = '%s'", $old_param));
+    // Modify per node mapping - should have no effect on per-content-type mapping.
+    $this->clickLink('Delete');
+    $this->drupalGet($feed_url . '/map');
+    $this->clickLink('Yes');
+    $old_mapping_after = db_fetch_array(db_query("SELECT mapping, unique_elements FROM {feedapi_mapper} WHERE param = '%s'", $old_param));
+    $this->assertTrue($old_mapping_after == $old_mapping_before, 'The per-content-type mapping hasn\'t been modified');
+  }
+
+  function testUniqueLogic() {
+    $this->drupalLogin($this->admin_user);
+    $this->enableParsers(TRUE, FALSE);
+    $unique_per_field = array(
+      'guid' => 1,
+      'original_url' => 25,
+    );
+    foreach ($unique_per_field as $field => $num_of_unique) {
+      $options = array(
+        'typename' => 'story',
+        'filename' => 'unique.xml',
+        'mappers' => array('node', 'feedapi_node'),
+        'mapping' => array(
+          serialize(array('options', $field)) => serialize(array('feedapi_node', $field)),
+        ),
+      );
+      $feed_url = $this->setupFeed($options);
+      $this->drupalGet($feed_url . '/map');
+      // Set URL unique.
+      $this->clickLink('No');
+      // Delete previously refreshed feed items (see setupFeed()).
+      $this->drupalPost($feed_url . '/purge', array(), 'Yes');
+      $this->drupalGet($feed_url . '/refresh');
+      $num_of_items = db_result(db_query("SELECT COUNT(*) FROM {feedapi_node_item}"));
+      $this->assertEqual($num_of_items, $num_of_unique);
+      $this->drupalPost($feed_url . '/purge', array(), 'Yes');
+      db_query("DELETE FROM {feedapi_mapper}");
+    }
+  }
+
+  function _testDefaultMapping() {
+    $options = array(
+      'typename' => 'story',
+      'filename' => 'drupal.xml',
+      'mappers' => array('node'),
+      'mapping' => array(
+      ),
+    );
+
+    $feed_url = $this->setupFeed($options);
+
+    // Check one of the nodes
+    $this->drupalGet('admin/content/node/overview');
+    $this->clickLink('DrupalCon DC Website: A Conference Archive');
+    $this->assertRaw('<h2 class="with-tabs">DrupalCon DC Website: A Conference Archive</h2>');
+    $this->assertText('Fri, 04/17/2009 - 15:21');
+    $this->assertText('The videos of more than 100 presentations');
+
+    // @todo: check lots of edge cases, wierd formats etc
+    // @todo: check multi-value fields
+    // @todo: check what happens if multiple fields elements map to the same field
+
+    $this->deleteFeed($feed_url);
+  }
+}

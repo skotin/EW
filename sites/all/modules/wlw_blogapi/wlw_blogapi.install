@@ -1,0 +1,62 @@
+<?php
+// $Id: wlw_blogapi.install,v 1.5 2008/10/16 19:32:21 jrglasgow Exp $
+
+/**
+ *  @file
+ *
+ *  install and uninstall functions for wlw_blogapi function
+ */
+
+
+/**
+ * Implementation of hook_install().
+ */
+function wlw_blogapi_install() {
+  // check to see if the blogapi module is installed,
+  // if so diasable it.
+  if (module_exists('blogapi')) {
+    module_disable(array('blogapi'));
+    drupal_set_message(t('WLW Blog API is not compatable with Blog API module. Blog API module has been disabled.'));
+    watchdog('wlw_blogapi',  'WLW Blog API is not compatable with Blog API module. Blog API module has been disabled.', array(), WATCHDOG_NOTICE);
+  }
+  drupal_install_schema('wlw_blogapi');
+}
+
+/**
+ *  Implementation of hook_schema().
+ */
+function wlw_blogapi_schema() {
+  $schema = array();
+  $schema['wlw_blogapi_files'] = array(
+    'fields' => array(
+      'fid' => array('type' => 'serial', 'not null' => TRUE, 'disp-width' => '11'),
+      'uid' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'disp-width' => '10'),
+      'filepath' => array('type' => 'varchar', 'length' => '255', 'not null' => TRUE, 'default' => ''),
+      'filesize' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'disp-width' => '10')),
+    'primary key' => array('fid'),
+    'indexes' => array(
+      'uid' => array('uid')
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function wlw_blogapi_uninstall() {
+  // Remove table.
+  drupal_uninstall_schema('wlw_blogapi');
+}
+function wlw_blogapi_update_6002() {
+  $ret = array();
+  // copy the settings from the old menu setting to the new setting
+  $menu_setting = variable_get('wlw_blogapi_menu', 'none');
+  $node_types = array_map('check_plain', node_get_types('names'));
+  foreach ($node_types as $key => $value) {
+    variable_set('wlw_blogapi_menu_'. $key, $menu_setting);
+  }
+  // remove old menu setting
+  variable_del('wlw_blogapi_menu');
+  return $ret;
+}

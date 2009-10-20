@@ -1,0 +1,404 @@
+<?php
+// $Id: menuclass.module,v 1.2 2009/01/05 14:47:29 daniboy Exp $
+
+/**
+ * @file The Menu Class modules allows adding HTML classes to
+ *   specific menu items.
+ */
+
+// Module constants.
+define('MENUCLASS_PATH', 'admin/build/menu/class');
+define('MENUCLASS_CUSTOMIZE_PATH', 'admin/build/menu-customize/%menu');
+
+/**
+ * Implementation of hook_menu().
+ */
+function menuclass_menu() {
+  
+  // Sets administration
+  $items[MENUCLASS_PATH] = array(
+    'title' => 'Class sets',
+    'page callback' => 'menuclass_admin_sets_page',
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'menuclass.admin.sets.inc',
+  );
+  
+  $items[MENUCLASS_PATH.'/%/rename'] = array(
+    'title' => 'Rename set',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('menuclass_admin_set_rename', 4),
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_CALLBACK,
+    'file' => 'menuclass.admin.sets.inc',
+  );
+  
+  $items[MENUCLASS_PATH.'/%/delete'] = array(
+    'title' => 'Rename set',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('menuclass_admin_set_delete', 4),
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_CALLBACK,
+    'file' => 'menuclass.admin.sets.inc',
+  );
+  
+  // Classes administration
+  $items[MENUCLASS_PATH.'/%/list'] = array(
+    'title' => 'List class definitions',
+    'page callback' => 'menuclass_admin_classes_page',
+    'page arguments' => array(4),
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_CALLBACK,
+    'file' => 'menuclass.admin.classes.inc',
+  );
+  
+  $items[MENUCLASS_PATH.'/class/%/redefine'] = array(
+    'title' => 'Redefine class',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('menuclass_admin_class_redefine', 5),
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_CALLBACK,
+    'file' => 'menuclass.admin.classes.inc',
+  );
+  
+  $items[MENUCLASS_PATH.'/class/%/delete'] = array(
+    'title' => 'Delete class',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('menuclass_admin_class_delete', 5),
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_CALLBACK,
+    'file' => 'menuclass.admin.classes.inc',
+  );
+  
+  // Menus configuration
+  $items[MENUCLASS_CUSTOMIZE_PATH.'/class'] = array(
+    'title' => 'Class sets selection',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('menuclass_admin_menu_set', 3),
+    'access arguments' => array('administer menu class'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'menuclass.admin.menu.inc',
+  );
+  
+  return $items;
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function menuclass_perm() {
+  return array('administer menu class', 'set menu item class');
+}
+
+/**
+ * Implementation of hook_theme()
+ */
+function menuclass_theme() {
+  return array(
+    'menuclass_admin_classes_list' => array(
+      'arguments' => array('form' => NULL),
+      'file' => 'menuclass.admin.classes.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Add classes to a link object.
+ *
+ * @param &$link
+ *   A link object.
+ */
+function menuclass_to_link(&$link) {
+  $mlid = $link['mlid'];
+  $class_objects = menuclass_get_item_classes($mlid);
+  
+  if (!empty($class_objects)) {
+    
+    $classes = array();
+    foreach ($class_objects as $class_object) {
+      $classes[] = $class_object['definition'];
+    }
+    $classes = implode(' ', $classes);
+    if (empty($link['localized_options']['attributes']['class'])) {
+      $link['localized_options']['attributes']['class'] = $classes;
+    }
+    else {
+      $link['localized_options']['attributes']['class'] .= ' '. $classes;
+    }
+    
+  }
+}
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function menuclass_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'menu_edit_item' &&
+    (user_access('set menu item class') || user_access('administer menu class'))) {
+    
+    $menu_name = $form['menu']['original_item']['#value']['menu_name'];
+    $mlid = is_array($form['menu']['#item']) ? $form['menu']['#item']['mlid'] : FALSE;
+    
+    // We only add Menu Class editing for existing items because new
+    // items don't have an $mlid.
+    if ($mlid) {
+      
+      // Get the list of active sets for this menu
+      $sets = menuclass_get_sets($menu_name);
+      
+      // No point in adding anything if this menu doesn't have any
+      // active class sets.
+      if (!empty($sets)) {
+        
+        // Add the a Menu Class fieldset. 
+        $form['menuclass'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Menu class settings'),
+          '#description' => format_plural(count($sets),
+            'Select a class to add to this item.',
+            'Select classes to add to this item.'
+          ),
+          '#weight' => -1,
+          '#collapsible' => TRUE,
+        );
+        
+        $default_values = menuclass_get_item_classes($mlid);
+        
+        // Add a select box for each class set.
+        foreach ($sets as $csid => $set) {
+          $form['menuclass']["menuclass-set-$csid"] = array(
+            '#type' => 'select',
+            '#title' => check_plain($set),
+            '#default_value' => is_array($default_values[$csid]) ? $default_values[$csid]['classid'] : 0,
+            '#options' => menuclass_get_classes_options($csid),
+          );
+        }
+        
+        // Add a submittion handler for this form.
+        $form['#submit'][] = 'menuclass_edit_item_submit';
+      }
+    }
+    
+  }
+}
+
+/**
+ * Submittion for menu_edit_item.
+ * 
+ * @see menuclass_form_alter().
+ */
+function menuclass_edit_item_submit($form, &$form_state) {
+  // Sanity check
+  if ($mlid = $form_state['values']['menu']['mlid']) {
+    
+    // We assume success until we fail.
+    $success = TRUE;
+    
+    foreach ($form_state['values'] as $key => $classid) {
+      
+      // Look for class definitions in the form state array.
+      if (substr($key, 0, 14) == 'menuclass-set-') {
+        
+        // Fetch the class set's ID from the array key
+        $csid = (int)substr($key, 14);
+        
+        // Update/Insert/Delete this menu item's class definition.
+        // Deleting/Updating take the class set's ID in consideration.
+        $success = menuclass_set_item_classid($mlid, $csid, $classid) && $success;
+        
+        // Unset this key from the form states array
+        unset($form_state['values'][$key]);
+        
+      }
+    }
+    
+    // We failed somewhere - Return an error.
+    if (!$success) {
+      drupal_set_message(t("An error occured while setting this item's classes."), 'error');
+    }
+    
+  }
+}
+
+/**
+ * Returns a keyed array of class sets.
+ * 
+ * @param $menu_name
+ *   (Optional) If not null, return only the the sets that are active
+ *   for the specified menu
+ * 
+ * @return array
+ *   A keyed array where the keys are set ids and the values are the
+ *   sets titles
+ */
+function menuclass_get_sets($menu_name = NULL) {
+  $result = db_query('SELECT * FROM {menu_class_set} ORDER BY title ASC');
+  
+  $sets = array();
+  while ($set = db_fetch_object($result)) {
+    $sets[$set->csid] = $set->title;
+  }
+  
+  if (!is_null($menu_name)) {
+    return array_intersect_key($sets, array_filter(variable_get("menuclass_active_sets_{$menu_name}", array())));
+  }
+  else {
+    return $sets;
+  }
+}
+
+/**
+ * Returns the title of a set.
+ * 
+ * @param $csid
+ *   The ID # of the class set we want the title of.
+ * 
+ * @return string
+ *   The set's title or null if not exists.
+ */
+function menuclass_get_set($csid) {
+  return db_result(db_query('SELECT title FROM {menu_class_set} WHERE csid = %d LIMIT 1', $csid));
+}
+
+/**
+ * Returns a keyed array of class definitions.
+ *
+ * @param $csid
+ *   The ID # of the class set that we want the class definitions of.
+ * 
+ * @return array
+ *   A keyed array where the keys are the classes ids and the values
+ *   are class definition objects.
+ */
+function menuclass_get_classes($csid) {
+  $result = db_query('SELECT * FROM {menu_class_definition} WHERE csid = %d ORDER BY weight ASC, definition ASC', $csid);
+  
+  $classes = array();
+  while ($class = db_fetch_object($result)) {
+    $classes[$class->classid] = $class;
+  }
+  
+  return $classes;
+}
+
+/**
+ * Returns a keyed array of class definitions, fit for the #options
+ * attribute of a form.
+ *
+ * @param $csid
+ *   The ID # of the class set that we want the class definitions of.
+ * 
+ * @return array
+ *   A keyed array where the keys are the classes ids and the values
+ *   are the class definitions.
+ */
+function menuclass_get_classes_options($csid) {
+  $classes_objects = menuclass_get_classes($csid);
+  $classes = array(0 => t('<None>'));
+  foreach ($classes_objects as $classid => $class_object) {
+    $classes[$classid] = $class_object->definition;
+  }
+  return $classes;
+}
+
+/**
+ * Returns a class definition object.
+ *
+ * @param $classid
+ *   The ID of the class we want the object of.
+ * 
+ * @return object
+ *   The class definition object of null if not exists.
+ */
+function menuclass_get_class($classid) {
+  return db_fetch_object(db_query('SELECT * FROM {menu_class_definition} WHERE classid = %d LIMIT 1', $classid));
+}
+
+/**
+ * Returns a keyed array containing class definitions object of a
+ * menu item.
+ *
+ * @param $mlid
+ *   The menu item's ID that we want the class definitions ID's of.
+ * 
+ * @return array
+ *   A keyed array where the key is a class set's ID and the value is
+ *   an array where the key 'classid' holds the value of a class
+ *   definition's ID and the key 'definition' hold the class
+ *   definition. 
+ */
+function menuclass_get_item_classes($mlid) {
+  $result = db_query('SELECT mcd.csid, mlc.classid, mcd.definition FROM {menu_links_class} mlc LEFT JOIN {menu_class_definition} mcd ON mlc.classid = mcd.classid WHERE mlid = %d', $mlid);
+  $classes = array();
+  while ($class = db_fetch_object($result)) {
+    $classes[$class->csid] = array(
+      'classid' => $class->classid,
+      'definition' => $class->definition,
+    );
+  }
+  return $classes;
+  
+}
+
+/**
+ * Set the item's class definition ID.
+ *
+ * @param $mlid
+ *   The menu item's ID of the item that we want to change the class
+ *   definition ID's.
+ * @param $csid
+ *   The class set's ID for the aforementioned menu item.
+ * @param $classid
+ *   (Optional) The new class definition's ID. If left empty will
+ *   remove the reference.
+ * 
+ * @return bool
+ *   True on success.
+ */
+function menuclass_set_item_classid($mlid, $csid, $classid = NULL) {
+  
+  // Should not set item's classid for unknown item or class set.
+  if (empty($mlid) || empty($csid)) {
+    return FALSE;
+  }
+  
+  // Remove existing reference to class definition's ID from the
+  // current class set.
+  if (db_query("DELETE FROM {menu_links_class} WHERE mlid = %d and classid IN (SELECT classid FROM {menu_class_definition} WHERE csid = %d) LIMIT 1", $mlid, $csid)) {
+    
+    // Create a new reference if a $classid was passed over.
+    if (!empty($classid)) {
+      $link_class = new stdClass();
+      $link_class->mlid = (int)$mlid;
+      $link_class->classid = (int)$classid;
+      return (bool)drupal_write_record('menu_links_class', $link_class);
+    }
+    else {
+      // We only needed to delete a reference. Return successfully.
+      return TRUE;
+    }
+  }
+  else {
+    // Failed to delete an existing reference. Return erroneous.
+    return FALSE;
+  }
+  
+}
+
+/**
+ * Helper function; Removes all whitespace from string
+ *
+ * @param $string
+ *   The string to de-whitespace
+ * 
+ * @return string
+ *   The de-whitespaced string
+ */
+function _menuclass_remove_whitespace($string) {
+  return preg_replace('/\s+/', ' ', trim($string));
+}
+
+
+
+
+// So Say We All.

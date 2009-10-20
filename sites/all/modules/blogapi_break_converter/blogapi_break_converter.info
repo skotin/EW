@@ -1,0 +1,6 @@
+; $Id: $
+name = Blog API Break Converter
+description = Converts <!--extended--> tag to <!--break-->
+version = 6.x-1.0-dev
+core = 6.x
+dependencies[] = blogapi

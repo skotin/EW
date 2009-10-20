@@ -1,0 +1,144 @@
+<?php
+// $Id: excerpt.module,v 1.15 2009/10/17 23:12:18 hanoii Exp $
+
+/**
+ * Implementation of hook_nodeapi().
+ */
+function excerpt_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  if (variable_get('excerpt_'. $node->type, 1)) {
+    switch ($op) {
+      case 'submit':
+        // Due to the presence of the teaser field in the node form,
+        // node.module doesn't generate a teaser from the body upon submit.
+        // In case the field has been left empty, it's up to us to generate one.
+        if (trim($node->teaser) == '') {
+          $node->teaser = isset($node->body) ? node_teaser($node->body, isset($node->format) ? $node->format : NULL) : '';
+        }
+        break;
+
+      case 'load':
+        // Support for nodes saved with earlier versions of excerpt. The teaser
+        // will now be created when submitting the node form to take some load
+        // from the server.
+        if (trim($node->teaser) == '' && $node->body != '') {
+          $node->teaser = node_teaser($node->body, isset($node->format) ? $node->format : NULL);
+        }
+        // node.module just checks whether the length of the teaser is less
+        // than the body length to decide whether a "read more" link is to be
+        // shown. With excerpts however, teasers can be even longer than the
+        // body field, which is why we need to overwrite that property with our
+        // own condition.
+        $excerpt = db_fetch_object(db_query("SELECT * FROM {excerpt} WHERE nid = %d AND vid = %d", $node->nid, $node->vid));
+        return array(
+          'excerpt' => (bool)strcmp($node->teaser, $node->body),
+          'teaser_format' => $excerpt->format,
+        );
+
+      case 'delete revision':
+        db_query("DELETE FROM {excerpt} WHERE nid = %d and vid = %d", $node->nid, $node->vid);
+        break;
+
+      case 'delete':
+        db_query("DELETE FROM {excerpt} WHERE nid = %d", $node->nid);
+        break;
+
+      case 'update':
+        // Existing nodes may not have an excerpt information stored,
+        // Check to see if we need to update one or create a new one.
+        $excerpt = db_fetch_object(db_query("SELECT * FROM {excerpt} WHERE nid = %d AND vid = %d", $node->nid, $node->vid));
+        if (empty($node->revision) && $excerpt) {
+          $primary_keys = array('vid');
+        }
+      case 'insert':
+        $excerpt = array();
+        $excerpt['vid'] = $node->vid;
+        $excerpt['nid'] = $node->nid;
+        $excerpt['format'] = $node->teaser_format;
+        drupal_write_record('excerpt', $excerpt, $primary_keys);
+        break;
+
+      case 'view':
+        $node->readmore = $node->excerpt;
+
+        // Because now we control the format of the teaser, we should check
+        // its markup against it
+        // See @node_prepare, @node_build_content
+        // As we are 'setting' the teaser, and not adding content,
+        // we want this module's hook to be called first of all,
+        // that's why the module's weight is set to -10 in the install file
+        $node->teaser = check_markup($node->teaser, $node->teaser_format, FALSE);
+        break;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function excerpt_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'node_type_form') {
+    $form['workflow']['excerpt']['excerpt'] = array(
+      '#type' => 'radios',
+      '#title' => t('Teaser'),
+      '#default_value' => variable_get('excerpt_'. $form['#node_type']->type, 1),
+      '#options' => array(t('Auto-generated'), t('Manual excerpt')),
+      '#description' => t('Choose whether the node teaser must be generated automatically or manually entered by the author.'),
+    );
+    if (!module_exists('content')) {
+    $form['workflow']['excerpt']['excerpt_wt'] = array(
+      '#type' => 'weight',
+      '#title' => t('Weight of Teaser field'),
+      '#default_value' => variable_get('excerpt_wt_'. $form['#node_type']->type, 0),
+    );
+  }
+  }
+  else if (isset($form['type']) && $form['type']['#value'] .'_node_form' == $form_id && variable_get('excerpt_'. $form['type']['#value'], 1) == 1) {
+    $form['teaser_field'] = array(
+      '#weight' => module_exists('content') ? content_extra_field_weight($form['type']['#value'], 'teaser') : variable_get('excerpt_wt_'. $form['type']['#value'], 0),
+      );
+    $form['teaser_field']['teaser'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Teaser'),
+      '#default_value' => $form['#node']->teaser,
+      '#cols' => 60,
+      '#rows' => $form['body_field']['body']['#rows'],
+      '#description' => t('Enter an excerpt for this item. It will be shown on listing pages along with a <em>read more</em> link which leads to the full view. Leave empty to auto-generate one from the body.'),
+    );
+    $form['teaser_field']['format'] = filter_form($form['#node']->teaser_format, 1, array('teaser_format'));
+
+    $form['body_field']['body']['#default_value'] = $form['#node']->body;
+
+    if(isset($form['body_field']['teaser_js'])) {
+      unset($form['body_field']['teaser_js']);
+      unset($form['body_field']['teaser_include']);
+
+      if(!empty($form['body_field']['#after_build'])) {
+        if ($id = array_search('node_teaser_js', $form['body_field']['#after_build'])) {
+          unset($form['body_field']['#after_build'][$id]);
+        }
+        if($id = array_search('node_teaser_include_verify', $form['body_field']['#after_build'])) {
+          unset($form['body_field']['#after_build'][$id]);
+        }
+      }
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_content_extra_fields.
+ */
+function excerpt_content_extra_fields($type_name) {
+  $type = node_get_types('type', $type_name);
+  $extra = array();
+
+  if (variable_get('excerpt_'. $type_name, 1)) {
+    $extra['teaser'] = array(
+      'label' => t('Excerpt'),
+      'description' => t('Manual excerpt'),
+      'weight' => variable_get('excerpt_wt_'. $type_name, 0),
+    );
+  }
+
+  return $extra;
+}

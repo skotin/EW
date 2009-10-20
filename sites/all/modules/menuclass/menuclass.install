@@ -1,0 +1,115 @@
+<?php
+// $Id: menuclass.install,v 1.2 2009/01/05 14:47:29 daniboy Exp $
+
+/**
+ * @file Installer file for Menu Class module.
+ */
+
+/**
+ * Implementation of hook_schema().
+ */
+function menuclass_schema() {
+  $schema['menu_class_set'] = array(
+    'description' => t('Sets of classes.'),
+    'fields' => array(
+      'csid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => t('Primary key: Unique set ID.'),
+      ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'descriptions' => t('Title of the classes set.'),
+      ),
+    ),
+    'primary key' => array('csid'),
+    'unique keys' => array(
+      'title' => array('title'),
+    ),
+  );
+  
+  $schema['menu_class_definition'] = array(
+    'description' => t('Classes names.'),
+    'fields' => array(
+      'classid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => t('Primary Key: Unique class ID.'),
+      ),
+      'csid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t('Index: The set to which this class belong. Reference {menu_class_set}.csid.'),
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => t("The class's weight."),
+      ),
+      'definition' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => t("The class name or names."),
+      ),
+    ),
+    'primary key' => array('classid'),
+    'indexes' => array(
+      'csid' => array('csid'),
+    ),
+  );
+  
+  $schema['menu_links_class'] = array(
+    'description' => t('Join table for menu items and their classes.'),
+    'fields' => array(
+      'mlid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t("Primary Key: Reference for {menu_links}.mlid."),
+      ),
+      'classid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t("Primary Key: Reference for {menu_class_definition}.classid."),
+      ),
+    ),
+    'primary key' => array(
+      'mlid',
+      'classid',
+    ),
+  );
+  
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function menuclass_install() {
+  // Create tables.
+  drupal_install_schema('menuclass');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function menuclass_uninstall() {
+  // Remove variables. Ugly, but I'm not sure there's another method.
+  db_query("DELETE FROM {variable} WHERE name LIKE 'menuclass_%'");
+  cache_clear_all('variables', 'cache');
+  
+  // Remove tables.
+  drupal_uninstall_schema('menuclass');
+}

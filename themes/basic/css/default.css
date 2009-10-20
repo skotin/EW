@@ -1,0 +1,162 @@
+
+/** ABOUT
+---------------------------------
+*  default.css is used to establish general rules and User interface Styles
+
+   BROWSER RESET
+---------------------------------
+*  For a more complete reset, go to http://developer.yahoo.com/yui/reset/
+*/
+
+* { margin: 0; padding: 0; }
+
+/** Clear Floats Without Structural Markup: 
+---------------------------------
+*  http://www.positioniseverything.net/easyclearing.html
+*/
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix { display: inline-block; }
+
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* End hide from IE-mac */
+
+
+/* clear classes for content 
+---------------------------------*/
+
+.clearleft { clear: left; }
+.clearright { clear: right; }
+.clearboth { clear: both; }
+
+/* Float classes for images */
+
+.floatleft { float: left; margin: 0 10px 5px 0 !important; }
+.floatright { float: right; margin: 0 0 5px 10px !important; }
+.floatleft .caption { font-size: 10px; font-weight: bold; text-transform: uppercase; padding-top: 5px; }
+
+
+/** "Skip to Main Content" link
+---------------------------------
+*  This link useful for both visually impaired people and those with mobility impairments
+*  who cannot use a mouse.
+*/
+
+#skip-nav { display: none; }
+
+#skip-nav a, #skip-nav a:hover, #skip-nav a:visited {
+  position: absolute;
+  left: 0;
+  top: -500px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+#skip-nav a:active, #skip-nav a:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+/** Prevent overflowing content **/
+
+#header,
+#content,
+#sidebar-left,
+#sidebar-right,
+#footer {
+  overflow: visible;
+  word-wrap: break-word; /* A very nice CSS3 property */
+}
+
+/* bug fix with views 2 edit links */
+
+div.view div.views-admin-links {
+	width:auto;
+}
+
+/** User interface styles 
+---------------------------- */
+
+.resizable-textarea textarea {
+	font-size:14px!important;
+}
+.messages {
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #04a107;
+	color: #04a107;
+	background-color: #edffed;
+}
+form{
+	margin:10px 0;
+}
+
+/** Rollover edit links for blocks
+----------------------------*/
+
+div.block {
+  position: relative;
+}
+div.block div.edit {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 40;
+  border: 1px solid #eee;
+  padding: 0 2px;
+  font-size: 11px;
+  background-color: #fff;
+}
+div.block:hover div.edit {
+  display: block;
+}
+
+/** WIREFRAMES STYLE
+------------------------------------*/
+
+.with-wireframes #header,
+.with-wireframes #content-top,
+.with-wireframes #content-top>*,
+.with-wireframes #content-header,
+.with-wireframes #content-header>*,
+.with-wireframes #content-area,
+.with-wireframes #content-area>*,
+.with-wireframes #content-bottom,
+.with-wireframes #content-bottom>*,
+.with-wireframes #primary,
+.with-wireframes #secondary,
+.with-wireframes #sidebar-left-inner,
+.with-wireframes #sidebar-right-inner,
+.with-wireframes .block{
+  padding: 2px;
+  border: 1px solid #bbb;
+}
+.with-wireframes .node {
+  border-bottom: 1px solid #bbb;
+  margin-bottom:10px;
+}
+.with-wireframes .block {
+  margin-bottom:3px;
+}
+.with-wireframes #content-top,
+.with-wireframes #content-header,
+.with-wireframes #content-area,
+.with-wireframes #content-bottom {
+  margin:0 3px 3px;
+}
+.with-wireframes #footer {
+  margin-top: 3px;
+  padding: 2px;
+  border: 1px solid #ccc;
+}

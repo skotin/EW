@@ -1,0 +1,784 @@
+<?php
+// $Id: feedapi_mapper.module,v 1.2.2.27 2009/09/29 18:47:12 alexb Exp $
+
+/**
+ * Implementation of hook_help().
+ */
+function feedapi_mapper_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#feedapi_mapper':
+      return t('FeedAPI Mapper - maps feed item elements to node fields');
+    case 'feedapi_mapper/full_name':
+      return t('FeedAPI Mapper - maps feed item elements to node fields');
+  }
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function feedapi_mapper_menu() {
+  $items = array();
+  $items['feedapi-mapper/%/unique/%/%'] = array(
+    'page callback' => 'feedapi_mapper_toggle_unique',
+    'page arguments' => array(1, 3, 4),
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  $items['node/%node/map'] = array(
+    'title' => 'Map',
+    'page callback' => 'feedapi_mapper_page',
+    'page arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  $items['node/%node/map/delete/%'] = array(
+    'title' => 'Delete',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('feedapi_mapper_delete_form', 1, 4),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  $items['node/%node/map/export'] = array(
+    'title' => 'Export',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('feedapi_mapper_export_page', 1),
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'weight' => 2,
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  $items['node/%node/map/map'] = array(
+    'title' => 'Map',
+    'page callback' => 'feedapi_mapper_page',
+    'page arguments' => array(1),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  $items['node/%node/map/default'] = array(
+    'title' => 'Default',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('feedapi_mapper_default_form', 1),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  $items['node/%node/map/restrict'] = array(
+    'title' => 'Restrict',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('feedapi_mapper_restrict_form', 1),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'feedapi_mapper_access_mapper',
+    'access arguments' => array(1),
+    'file' => 'feedapi_mapper.admin.inc',
+  );
+  foreach (node_get_types() as $type) {
+    $type_url_str = str_replace('_', '-', $type->type);
+    $items['admin/content/node-type/'. $type_url_str .'/map'] = array(
+      'title' => 'Map',
+      'page callback' => 'feedapi_mapper_page',
+      'page arguments' => array(3),
+      'load arguments' => array(3),
+      'type' => MENU_LOCAL_TASK,
+      'access callback' => 'feedapi_mapper_access_mapper',
+      'access arguments' => array(3),
+      'file' => 'feedapi_mapper.admin.inc',
+      );
+    $items['admin/content/node-type/'. $type_url_str .'/map/map'] = array(
+      'title' => 'Map',
+      'page callback' => 'feedapi_mapper_page',
+      'page arguments' => array(3),
+      'load arguments' => array(3),
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'access callback' => 'feedapi_mapper_access_mapper',
+      'access arguments' => array(3),
+      'file' => 'feedapi_mapper.admin.inc',
+    );
+    $items['admin/content/node-type/'. $type_url_str .'/map/delete/%'] = array(
+      'title' => 'Delete',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('feedapi_mapper_delete_form', 3, 6),
+      'load arguments' => array(3),
+      'type' => MENU_CALLBACK,
+      'access callback' => 'feedapi_mapper_access_mapper',
+      'access arguments' => array(3),
+      'file' => 'feedapi_mapper.admin.inc',
+    );
+    $items['admin/content/node-type/'. $type_url_str .'/map/export'] = array(
+      'title' => 'Export',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('feedapi_mapper_export_page', 3),
+      'type' => MENU_LOCAL_TASK,
+      'access callback' => 'feedapi_mapper_access_mapper',
+      'access arguments' => array(3),
+      'weight' => 2,
+      'file' => 'feedapi_mapper.admin.inc',
+    );
+    $items['admin/content/node-type/'. $type_url_str .'/map/revert'] = array(
+      'title' => 'Revert',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('feedapi_mapper_revert', 3),
+      'type' => MENU_CALLBACK,
+      'access callback' => 'feedapi_mapper_access_mapper',
+      'access arguments' => array(3),
+      'file' => 'feedapi_mapper.admin.inc',
+    );
+  }
+  return $items;
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function feedapi_mapper_theme() {
+  return array(
+    'feedapi_mapper_form' => array(
+      'arguments' => array('form'),
+      'file' => 'feedapi_mapper.admin.inc',
+    ),
+    'feedapi_mapper_descriptions' => array(
+      'arguments' => array('descriptions'),
+      'file' => 'feedapi_mapper.admin.inc',
+    ),
+  );
+}
+
+/**
+ * Determine whether current user can map on a given content type.
+ * Primarily used as menu acess callback. @see feedapi_mapper_menu()
+ * 
+ * @param $node
+ *   String that defines a content type or node object.
+ * @return 
+ *   TRUE if current user can map feed elements AND content type is feed enabled.
+ *   FALSE otherwise.
+ */
+function feedapi_mapper_access_mapper($node) {
+  if (user_access('administer feedapi')) {
+    if (is_numeric($node)) {
+      $node = node_load($node);
+    }
+    if (is_string($node)) {
+      // String comes from directly from path, substitute - with _.
+      $node_type = str_replace('-', '_', $node);
+    }
+    elseif (is_string($node->type)) {
+      $node_type = $node->type;
+    }
+    else {
+      return FALSE;
+    }
+    if (feedapi_enabled_type($node_type)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Map feed elements from a feed item to a target object or array.
+ * 
+ * feedapi_mapper_map() will modify the $target variable if it is an object.
+ * In any case, it will yield the populated $target variable as a return value.
+ * 
+ * @param $feed_node
+ *   Feed node object of this feed item.
+ * @param $item
+ *   Feed item to map from.
+ * @param $target
+ *   Target object or array to map to.
+ * 
+ * @return 
+ *   The target object with elements populated by mappers.
+ */
+function feedapi_mapper_map($feed_node, $processor, $item, $target = array()) {
+  $mapping = feedapi_mapper_load_mapping($feed_node);
+  if ($mapping['mapping']) {
+    // Load available mappers.
+    _feedapi_mapper_load_mappers();
+    // Convert item to array:
+    $item = _feedapi_mapper_obj2array($item);
+    $item = _feedapi_mapper_simplify_raw($item, $feed_node->feed->parsers);
+    foreach ($mapping['mapping'] as $element_path => $field) {
+      if ($field) { // Double check if field is set - @todo: this step could be skipped.
+        $field = unserialize($field);
+        $element_path = unserialize($element_path);
+        // Get the feed item element on $element_path and pass it into the mapping function.
+        $feed_item_element = feedapi_mapper_get_element($element_path, $item);
+        $target = call_user_func($field[0] .'_feedapi_mapper', 'map', $feed_node, $processor, $target, $feed_item_element, $field[1], isset($field[2]) ? $field[2] : NULL);
+      }
+    }
+  }
+  return $target;
+}
+
+/**
+ * Collects ids of duplicate items of $item.
+ * Most commonly used by FeedAPI processors to determine whether given item is unique.
+ * @see _feedapi_node_unique() for example.
+ *
+ * @param $feed_node
+ *   Feed node object of this feed item.
+ * @param $item
+ *   Feed item to decide on.
+ *
+ * @return
+ *   An array containing duplicate items per unique elements, FALSE if no unique elements were defined.
+ *   The exact format of the duplicate items is up to the implementer of feedapi_mapper($op = 'unique'):
+ *   array(
+ *     [0] => array(// duplicates for unique element 1, e. g. URL - format up to implementer ),
+ *     [1] => array(// duplicates for unique element 2, e. g. GUID - format up to implementer ),
+ *     // ...
+ *   )
+ *
+ *   For instance, feedapi_node processor expects arrays where the key is the item's node id
+ *   and the value is an array of feeds the feed item is associated with:
+ *
+ *   array(
+ *     [0] => array(itemid1 => array(feedid1, feedid2)),
+ *     [1] => array(itemid2 => array(feedid1, feedid2)),
+ *   )
+ */
+function feedapi_mapper_unique($feed_node, $processor, $item) {
+  _feedapi_mapper_load_mappers();
+  $uniques = feedapi_mapper_get_uniques($feed_node);
+  if (empty($uniques)) {
+    return FALSE;
+  }
+  $result = array();
+  foreach ($uniques as $unique) {
+    $feed_item_element = feedapi_mapper_get_element($unique['source'], _feedapi_mapper_obj2array($item));
+    $duplicates = call_user_func($unique['target'][0] .'_feedapi_mapper', 'unique', $feed_node, $processor, NULL, $feed_item_element, $unique['target'][1]);
+    // If they're not compatible with the given processor the result should be empty.
+    if (!empty($duplicates)) {
+      $result[] = $duplicates;
+    }
+  }
+  return $result;
+}
+
+/**
+ * Returns paths to unique feed elements.
+ * 
+ * @param $feed_node
+ *   Feed node object.
+ * 
+ * @return
+ *   An array of arrays that describe the path to unique elements of this feed's feed items.
+ */
+function feedapi_mapper_get_uniques($feed_node) {
+  $mapping = feedapi_mapper_load_mapping($feed_node);
+  $uniques = array();
+  if ($mapping['unique']) {
+    foreach ($mapping['unique'] as $source => $unique) {
+       if ($unique) {
+         $uniques[] = array(
+          'source' => unserialize($source),
+          'target' => unserialize($mapping['mapping'][$source]),
+         );
+       }
+    }
+  }
+  return $uniques;
+}
+
+/**
+ * Sets the unique bit of the given $key at $param
+ *
+ * @param $param
+ *   Either a node id or a node type.
+ * @param $source
+ *   A serialized string defining the source feed element.
+ * @param $unique
+ *   TRUE or FALSE
+ */
+function feedapi_mapper_save_unique($param, $source, $unique) {
+  $node = new stdClass();
+  $field = is_numeric($param) ? 'nid' : 'type';
+  $node->{$field} = $param;
+  $mapping = feedapi_mapper_override_mapping($node);
+  $mapping['unique_elements'][$source] = $unique;
+  feedapi_mapper_save_mapping($param, $mapping);
+}
+
+/**
+ * Returns feed item element on given path.
+ */
+function feedapi_mapper_get_element($path, $item) {
+  $p = array_shift($path);
+  if (count($path) > 0) {
+    return feedapi_mapper_get_element($path, $item[$p]);
+  }
+  else if (isset($item[$p])) {
+    return $item[$p];
+  }
+}
+
+/**
+ * Add an additional map to a given mapping.
+ *
+ * @param $param
+ * Either a node id of a node type. Used to determine storage.
+ * @param $source
+ * A serialized string mapping to the source feed element.
+ * @param $target
+ * A serialized string mapping to the target node element.
+ * @param $unique
+ * A boolean value that specifies whether the given $source should be unique.
+ */
+function feedapi_mapper_add_mapping($param, $source, $target, $unique) {
+  $map = (array) array_pop(ctools_export_load_object('feedapi_mapper', 'conditions', array('param' => $param)));
+  if (!empty($map)) {
+    $map['mapping'][$source] = $target;
+    $map['unique_elements'][$source] = $unique;
+    drupal_write_record('feedapi_mapper', $map, ($map['export_type'] == EXPORT_IN_CODE) ? NULL : 'param');
+  }
+  else {
+    $map = array(
+      'param' => $param,
+      'mapping' => array($source => $target),
+      'unique_elements' => array($source => $unique),
+    );
+    drupal_write_record('feedapi_mapper', $map);
+  }
+}
+
+/**
+ * Save a full mapping array.
+ *
+ * @param $param
+ *   Either a node id of a node type. Used to determine storage.
+ * @param $mapping
+ *   Mapping object like returned from feedapi_mapper_load_mapping();
+ */
+function feedapi_mapper_save_mapping($param, $mapping) {
+  feedapi_mapper_delete_mapping($param);
+  $mapping['param'] = $param;
+  drupal_write_record('feedapi_mapper', $mapping);
+}
+
+/**
+ * Delete a single mapping or all mappings.
+ */
+function feedapi_mapper_delete_mapping($param, $source = NULL) {
+  if ($source === NULL) {
+    db_query("DELETE FROM {feedapi_mapper} WHERE param = '%s'", $param);
+  }
+  else {
+    if ($map = db_fetch_array(db_query("SELECT mapping, unique_elements, param FROM {feedapi_mapper} WHERE param = '%s'", $param))) {
+      $map['mapping'] = unserialize($map['mapping']);
+      $map['unique_elements'] = unserialize($map['unique_elements']);
+      unset($map['mapping'][$source]);
+      unset($map['unique_elements'][$source]);
+      drupal_write_record('feedapi_mapper', $map, 'param');
+    }
+  }
+}
+
+/**
+ * Overrides the mapping with the exported mapping if the current is exported.
+ * Acts like _feedapi_mapper_load($param) otherwise.
+ *
+ * @param
+ *   Either a node id of a node type.
+ * @return
+ *   The (new) valid mapping for $param
+ */
+function feedapi_mapper_override_mapping($node) {
+  $mapping = feedapi_mapper_load_mapping($node);
+  if ($mapping) {
+    if ($mapping['export_type'] === EXPORT_IN_CODE) {
+      feedapi_mapper_save_mapping(isset($node->nid) ? $node->nid : $node->type, $mapping);
+    }
+    return $mapping;
+  }
+}
+
+/**
+ * Helper function - determines content type of feed _item_.
+ */
+function feedapi_mapper_get_item_node_type($feed_node) {
+  $settings = feedapi_get_settings($feed_node->type, $feed_node->vid);
+  if (!isset($settings['processors']['feedapi_node']['content_type'])) {
+    return FALSE;
+  }
+  if (isset($settings['processors']['feedapi_node']['enabled']) && $settings['processors']['feedapi_node']['enabled'] === 0) {
+    return FALSE;
+  }
+  return $settings['processors']['feedapi_node']['content_type'];
+}
+
+/**
+ * Wrapper function that retrieves a mapping for a given feed or feed content type.
+ * 
+ * @param $feed_node
+ *   Object with either $feed_node->nid or $feed_node->type set. Function will first
+ *   try to load a per node mapping, then falls back to per content type mapping.
+ * 
+ * @return 
+ *   Array where 'mapping' contains the mapping and 'unique' the unique flag of a
+ *   mapping. FALSE if no mapping is available for the given $feed_node.
+ */
+function feedapi_mapper_load_mapping($feed_node) {
+  if (isset($feed_node->nid)) {
+    if ($mapping = _feedapi_mapper_load_mapping($feed_node->nid)) {
+      return $mapping;
+    }
+  }
+  return _feedapi_mapper_load_mapping($feed_node->type);
+}
+
+/**
+ * Retrieve mapping for a given param.
+ * 
+ * Use feedapi_mapper_load_mapping() to retrieve per content_type mapping
+ * or per node type mapping automatically depending on availability.
+ */
+function _feedapi_mapper_load_mapping($param) {
+  ctools_include('export');
+  if ($mapping = ctools_export_load_object('feedapi_mapper', 'conditions', array('param' => $param))) {
+    $mapping = (array) array_pop($mapping);
+    if (!empty($mapping['mapping'])) {
+      $mapping['unique'] = $mapping['unique_elements'];
+      return $mapping;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Determines the scope of the mapping for the given node id.
+ *
+ * @param $nid
+ *   Node id.
+ * 
+ * @return 
+ *   TRUE if the mapping is valid for the node only
+ *   FALSE if it's valid for the entire content-type
+ */
+function _feedapi_mapper_scope($nid) {
+  if (_feedapi_mapper_load_mapping($nid)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Load mapper implementations.
+ */
+function _feedapi_mapper_load_mappers() {
+  static $loaded = FALSE;
+  if (!$loaded) {
+    // Load all feedapi mapper implementations from all the modules' ./mappers
+    $files = drupal_system_listing('.*\.inc$', 'modules', 'name');
+    foreach ($files as $file) {
+      if (strstr($file->filename, '/mappers/')) {
+	      require_once("./$file->filename");
+      }
+    }
+    // Rebuild cache.
+    module_implements('', FALSE, TRUE);
+  }
+  $loaded = TRUE;
+}
+
+/**
+ * @todo: move this function to feedapi as feedapi_parse().
+ */
+function _feedapi_parse($feed) {
+  return _feedapi_call_parsers($feed, $feed->parsers, $feed->half_done ? FALSE : TRUE);
+}
+
+/**
+ * Simplifies options->raw item on feed item.
+ */
+function _feedapi_mapper_simplify_raw($item, $parsers) {
+  if (isset($item['options']['raw'])) {
+    if (in_array('parser_simplepie', $parsers)) {
+      $item['options']['raw'] = parser_simplepie_simplify_raw_item($item['options']['raw']);
+    }
+  }
+  return $item;
+}
+
+/**
+ * Returns all feed items on node as one merged item.
+ */
+function _feedapi_mapper_get_items_merged($feed_node) {
+  if ($feed_node->feed) {
+    $feed = _feedapi_parse($feed_node->feed);
+    // Convert items to array.
+    $items = _feedapi_mapper_obj2array($feed->items);
+    // Merge items to one item.
+    $merged = NULL;
+    if (is_array($items)) {
+      $i = 0;
+      foreach ($items as $item) {
+        if ($i++ > 10) {
+          break;
+        }
+        $merged = _feedapi_mapper_array_merge_recursive($item, $merged);
+      }
+    }
+    return $merged;
+  }
+}
+
+/**
+ * Sister function of _feedapi_mapper_get_feed_elements().
+ * Returns array in same format. Only difference: does not take
+ * a real feed that it analyzes, but returns some standard elements.
+ * 
+ * Standard elements:
+ * 
+ * options-&gt;original_author-&gt;name
+ * options-&gt;original_author-&gt;picture
+ * options-&gt;original_author
+ * options-&gt;tags
+ * 
+ * Implement hook_feedapi_mapper_elements() to add custom standard
+ * elements.
+ * 
+ * @see hook_feedapi_mapper_elements().
+ * 
+ * @return
+ *   Array in the format array('pathname' => 'serializedpath')
+ */
+function _feedapi_mapper_get_standard_elements() {
+  $paths = array();
+  $paths[] = array('title');
+  $paths[] = array('description');
+  $paths[] = array('timestamp');
+  $paths[] = array('options');
+  $paths[] = array('options', 'original_url');
+  $paths[] = array('options', 'guid');
+  $paths[] = array('options', 'tags');
+  $paths[] = array('options', 'original_author', 'name');
+  $paths[] = array('options', 'original_author', 'picture');
+  $paths[] = array('options', 'original_author');
+  $paths[] = array('options', 'tags');
+  // hook_feedapi_mapper_elements() - allow other modules to add paths.
+  // These should be in the exact same format as the paths above, i.e.:
+  // array(array('foo', 'bar'), array('fnargle', 'bargle'),);
+  foreach (module_implements('feedapi_mapper_elements') as $module) {
+    $result = call_user_func($module .'_feedapi_mapper_elements');
+    if (is_array($result)) {
+      $paths = array_merge($paths, $result);
+    }
+  }
+
+  foreach ($paths as $path) {
+    $elements[implode('->', $path)] = serialize($path);
+  }
+  return $elements;
+}
+
+/**
+ * Takes a feed item and retrieves paths to all elements.
+ * Use a merged feed item (_feedapi_mapper_get_items_merged()) for best results.
+ * 
+ * @return
+ *   Array in the format array('pathname' => 'serializedpath')
+ */
+function _feedapi_mapper_get_feed_elements($merged_item) {
+  // Retrieve paths to elements in merged item.
+  // Stick them into an array where the key is the serialized path and the value is the element name.
+  $elements = array();
+  while (count($merged_item)) {
+    $path = array();
+    $path = _feedapi_mapper_next_element_path($merged_item, $path, TRUE);
+    if ($path == FALSE) {
+      break;
+    }
+    $elements[implode('->', $path)] = serialize($path);
+  }
+  return $elements;
+}
+
+/**
+ * Traverse an associative array and look for path to first leaf.
+ * If found, unset leaf and return path to it.
+ * 
+ * @return
+ *   A path to a leaf element in the format
+ *   array(path, to, leaf, element);
+ */
+function _feedapi_mapper_next_element_path(&$items, &$path, $reset_count = FALSE) {
+  // This recursion is a bit shaky. Put on breaks.
+  static $i = 0;
+  $i++;
+  if ($reset_count) {
+    $i = 0;
+  }
+  if ($i > 200) {
+    drupal_set_message(t('Error in recursion _feedapi_mapper_next_element_path()'), 'error');
+    return FALSE;
+  }
+  foreach ($items as $key => $value) {
+    $path[] = $key;
+    // Recurse if value is array and if it contains elements.
+    if (is_array($items[$key]) && count($items[$key])) {
+      // Arrays with keys of 0 are not considered collections of same items - reached a leaf.
+      if (isset($items[$key][0])) {
+        unset($items[$key]);
+        return $path;
+      }
+      else if ($result_path = _feedapi_mapper_next_element_path($items[$key], $path)) {
+        // Leaf was found, pass it up.
+        return $result_path;
+      }
+    }
+    else {
+      // Reached leaf, unset it and return path to it.
+      unset($items[$key]);
+      return $path;
+    }
+  }
+  // No leaves found in this pass.
+  return FALSE;
+}
+
+/**
+ * Converts a multidemensional associative array with interdispersed objects into
+ * an associative array only.
+ */
+function _feedapi_mapper_obj2array($items) {
+  if (is_object($items)) {
+    $items = (array) $items;
+  }
+  if (is_array($items)) {
+    foreach ($items as $key => $value) {
+      $items[$key] = _feedapi_mapper_obj2array($value);
+    }
+  }
+  return $items;
+}
+
+/**
+ * Truncates all strings in cascaded array.
+ */
+function _feedapi_mapper_truncate_array($array) {
+  foreach ($array as $k => $v) {
+    if (is_string($v)) {
+      $array[$k] = strip_tags($v);
+      $array[$k] = truncate_utf8($array[$k], 200, TRUE, TRUE);
+    }
+    else if (is_array($v)) {
+      $array[$k] = _feedapi_mapper_truncate_array($v);
+    }
+  }
+  return $array;
+}
+
+/**
+ * Like array_merge_recursive. Only difference: does NOT merge
+ * two different keys into an array, but merges key on key.
+ * Argument 1 always has to be an array.
+ */
+function _feedapi_mapper_array_merge_recursive($array1, $array2) {
+  $result = NULL;
+  foreach ($array1 as $k => $v) {
+    if (is_array($array1[$k])) {
+      $result[$k] = _feedapi_mapper_array_merge_recursive($array1[$k], isset($array2[$k]) ? $array2[$k] : NULL);
+    }
+    else {
+      $result[$k] = $array1[$k];
+    }
+  }
+  if (is_array($array2)) {
+    foreach ($array2 as $k => $v) {
+      if (is_array($array2[$k])) {
+        $result[$k] = _feedapi_mapper_array_merge_recursive($array2[$k], isset($array1[$k]) ? $array1[$k] : NULL);
+      }
+      else {
+        $result[$k] = $array2[$k];
+      }
+    }
+  }
+  return $result;
+}
+
+/**
+ * Utility function, retrieve active processors from FeedAPI configuration for a content type.
+ */
+function _feedapi_mapper_get_active_processors($content_type) {
+  $feed_settings = feedapi_get_settings($content_type);
+  $active_processors = array();
+  foreach ($feed_settings['processors'] as $processor_name => $processor) {
+    if ($processor['enabled']) {
+      $active_processors[$processor_name] = $processor_name;
+    }
+  }
+  return $active_processors;
+}
+
+/**
+ * Get field mappers for a given node type. Returns an array of all
+ * feed mappers that are applicable to this node type.
+ * @param $node_type
+ *   Valid node type.
+ * @return
+ *   Array of fields that are mappable for this content type.
+ */
+function _feedapi_mapper_get_field_mappers($feed_node) {
+
+  // Load all available mappers and create an array of fields available as mapping target.
+  _feedapi_mapper_load_mappers();
+  $modules = module_implements('feedapi_mapper');
+  $field_mappers = array();
+  $active_processors = _feedapi_mapper_get_active_processors($feed_node->type);
+  foreach ($modules as $module) {
+    foreach ($active_processors as $processor) {
+      if ($fields = module_invoke($module, 'feedapi_mapper', 'list', $feed_node, $processor)) {
+        foreach ($fields as $field_name => $sub_fields) {
+          $field_label = is_string($sub_fields) ? $sub_fields : $field_name;
+          $field_category = t('@field (@module)', array('@field' => $field_label, '@module' => $module));
+          if (is_array($sub_fields)) {
+            foreach ($sub_fields as $sub_field_id => $sub_field_name) {
+              $field_mappers[$field_category][serialize(array($module, $field_name, $sub_field_id))] = $field_category .': '. $sub_field_name;
+            }
+          }
+          else {
+            $field_mappers[serialize(array($module, $field_name))] = $field_category;
+          }
+        }
+      }
+    }
+  }
+  
+  return $field_mappers;
+}
+
+/**
+ * Returns descriptions for all mappable fields of given node type.
+ * @return
+ *   Array in the format
+ *   array('field_name_a' =>
+ *          array('module_name_a' => 'Descriptive text'),
+ *                'module_name_b' => ...),
+ *         'field_name_b' =>  array(...),
+ *         );
+ */
+function _feedapi_mapper_get_field_mappers_descriptions($feed_node) {
+  // Load all available mappers and create an array of fields available as mapping target.
+  _feedapi_mapper_load_mappers();
+  $modules = module_implements('feedapi_mapper');
+  $descriptions = array();
+  $active_processors = _feedapi_mapper_get_active_processors($feed_node->type);
+  foreach ($modules as $module) {
+    foreach ($active_processors as $processor) {
+      if ($description = module_invoke($module, 'feedapi_mapper', 'describe', $feed_node, $processor)) {
+        $descriptions[$module] = $description;
+      }
+    }
+  }
+  return $descriptions;
+}

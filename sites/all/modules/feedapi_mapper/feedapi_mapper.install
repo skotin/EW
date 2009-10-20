@@ -1,0 +1,96 @@
+<?php
+// $Id: feedapi_mapper.install,v 1.2.2.2 2009/08/07 14:07:44 aronnovak Exp $
+
+/**
+ * Implementation of hook_schema().
+ */
+function feedapi_mapper_schema() {
+  $schema['feedapi_mapper'] = array(
+    'description' => 'Stores data for the feedapi mapper',
+    'export' => array(
+      'key' => 'param',
+      'identifier' => 'feedapi_mapper',
+      'default hook' => 'feedapi_mapper_default',  // Function hook name.
+      'api' => array(
+        'owner' => 'feedapi_mapper',
+        'api' => 'feedapi_mapper_default',  // Base name for api include files.
+        'minimum_version' => 1,
+        'current_version' => 1,
+      ),
+    ),
+    'fields' => array(
+      'param' => array(
+        'description' => 'The identifier of the mapping. Can be a nid or a content-type name.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE),
+      'mapping' => array(
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+        'serialize' => TRUE),
+      'unique_elements' => array(
+        'description' => 'Specifies whether the source feed element should be unique.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+        'serialize' => TRUE),
+      ),
+    'primary key' => array('param'),
+  );
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function feedapi_mapper_install() {
+  drupal_install_schema('feedapi_mapper');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function feedapi_mapper_uninstall() {
+  drupal_uninstall_schema('feedapi_mapper');
+}
+
+/**
+ * Add unique flag, properly designate fields as serializable.
+ */
+function feedapi_mapper_update_6201() {
+  $ret = array();
+  db_add_field($ret, 'feedapi_mapper', 'unique_elements',
+    array(
+      'description' => 'Specifies whether the source feed element should be unique.',
+      'type' => 'text',
+      'size' => 'big',
+      'not null' => TRUE,
+      'serialize' => TRUE,
+    )
+  );
+  $spec = array(
+    'type' => 'text',
+    'size' => 'big',
+    'not null' => TRUE,
+    'serialize' => TRUE,
+  );
+  db_change_field($ret, 'feedapi_mapper', 'mapping', 'mapping', $spec);
+  return $ret;
+}
+
+/**
+ * Changes nid field to param to be able to unify per-type and per-node storage of the mappings.
+ */
+function feedapi_mapper_update_6202() {
+  $ret = array();
+  db_change_field($ret, 'feedapi_mapper', 'nid', 'param',
+    array(
+      'description' => 'The identifier of the mapping. Can be a nid or a content-type name.',
+      'type' => 'varchar',
+      'length' => 32,
+      'not null' => TRUE
+    )
+  );
+  return $ret;
+}

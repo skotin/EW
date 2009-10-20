@@ -1,0 +1,13 @@
+; $Id: wlw_blogapi.info,v 1.2.2.1 2009/08/24 16:47:25 jrglasgow Exp $
+name = WLW Blog API
+description = Allows users to post content using Windows Live Writer.
+dependencies[]=blog
+core = 6.x
+
+
+; Information added by drupal.org packaging script on 2009-09-09
+version = "6.x-1.7"
+core = "6.x"
+project = "wlw_blogapi"
+datestamp = "1252518750"
+

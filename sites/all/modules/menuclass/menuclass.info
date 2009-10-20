@@ -1,0 +1,13 @@
+; $Id: menuclass.info,v 1.2 2009/01/05 14:47:29 daniboy Exp $
+name = Menu Class
+description = Allows adding HTML classes to specific menu items.
+package = "Menu"
+dependencies[] = menu
+core = 6.x
+
+; Information added by drupal.org packaging script on 2009-02-01
+version = "6.x-1.0"
+core = "6.x"
+project = "menuclass"
+datestamp = "1233491725"
+

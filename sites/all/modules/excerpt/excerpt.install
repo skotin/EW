@@ -1,0 +1,105 @@
+<?php
+// $Id: excerpt.install,v 1.7 2009/10/17 23:12:18 hanoii Exp $
+
+/**
+ * Implementation of hook_schema().
+ */
+function excerpt_schema() {
+  $schema['excerpt'] = array(
+    'description' => 'A table for node\'s extra excerpt information.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The {node} this version belongs to.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0),
+      'vid' => array(
+        'description' => 'The primary identifier for this version.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE),
+      'format' => array(
+        'description' => "The input format used by this version's excerpt.",
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0)
+      ),
+    'indexes' => array(
+      'nid' => array('nid'),
+      ),
+    'primary key' => array('vid'),
+  );
+
+  return $schema;
+ }
+
+/**
+ * Implementation of hook_install().
+ */
+function excerpt_install() {
+  drupal_install_schema('excerpt');
+  db_query("UPDATE {system} SET weight = -10 WHERE name = 'excerpt'");
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function excerpt_uninstall() {
+  // Delete all the excerpt variables and clear the variable cache.
+  db_query("DELETE FROM {variable} WHERE name LIKE 'excerpt_%'");
+}
+
+/**
+ * Creates the excerpt schema.
+ */
+function excerpt_update_6001() {
+  $ret = array();
+  
+  drupal_install_schema('excerpt');
+
+  return $ret;
+}
+
+/**
+ * Sets the module's weight to -10 to make sure it is run first.
+ */
+function excerpt_update_6002() {
+  $ret = array();
+
+  $ret[] = update_sql("UPDATE {system} SET weight = -10 WHERE name = 'excerpt'");
+  
+  return $ret;
+}
+
+
+/**
+ * @defgroup updates-4.7-to-5.0 Excerpt updates from 4.7 to 5.0
+ * @{
+ */
+
+/**
+ * Update variable names.
+ */
+function excerpt_update_5000() {
+  $ret = array();
+  foreach (node_get_types() as $type) {
+    $old_var = 'excerpt_option_'. $type->type;
+    $old_val = variable_get($old_var, NULL);
+    if (isset($old_val)) {
+      $new_var = 'excerpt_'. $type->type;
+      $new_val = variable_get($new_var, NULL);
+      // Don't overwrite existing variables.
+      if (!isset($new_val)) {
+        variable_set($new_var, $old_val);
+      }
+      // Delete old_val variable.
+      variable_del($old_var);
+    }
+  }
+  return $ret;
+}
+
+/**
+ * @} End of "defgroup updates-4.7-to-5.0"
+ */
