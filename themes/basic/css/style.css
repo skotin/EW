@@ -227,20 +227,16 @@ abbr {
 
 /*Tagadelic*/
 
-#mini-panel-tagadelic {
+#block-panels_mini-tagadelic{
     padding: 0px;
 }
 
-#mini-panel-tagadelic  .content {
+#block-panels_mini-tagadelic  .content {
     margin: 5px;
 }
 
-#sidebar-first #sidebar-first-inner #mini-panel-tagadelic .title,
-#block-views-Rating-block_1 .title, 
-#block-views-audio-block_1 .title,
-#block-views-person_view-block_1 .title,
-#block-panels_mini-89 .block-inner .title,
-#block-panels_mini-56 .title.block-title {
+.sidebar  .title
+{
     background-color: #ccc;
     color: #fff;
     font-size: 1em;
@@ -250,12 +246,12 @@ abbr {
 
 }
 
-#sidebar-first #sidebar-first-inner #mini-panel-tagadelic .title {
+#sidebar-first #sidebar-first-inner #block-panels_mini-tagadelic .title {
     font-size: 1.1em;
     text-align:left;
 }
 
-#sidebar-first #sidebar-first-inner #mini-panel-tagadelic a {
+#sidebar-first #sidebar-first-inner #block-panels_mini-tagadelic a {
     color: #666;
     text-decoration: underline;
 }
@@ -270,7 +266,7 @@ abbr {
     margin: 0 5px;
 }
 
-.view-GlavRedArticle .teaser {
+#block-panels_mini-editorial .teaser {
     display: none;
 }
 
@@ -420,8 +416,7 @@ abbr {
     display: none;
 }
 
- #block-views-audio-block_1 .title,
- #block-panels_mini-89 .block-inner .title 
+ #sidebar-second  .title 
  {
      background-color:#15727A;
  }
@@ -437,29 +432,26 @@ abbr {
     margin-top:-10px;
 }
 
-#block-panels_mini-89  .views-field-created,
-#block-panels_mini-89  h4
+#mini-panel-news  .views-field-created,
+#mini-panel-news   h4
 {
     display:inline;
 
 }
 
-#block-panels_mini-89  .views-field-created {
+#mini-panel-news  .views-field-created {
     font-size:0.9em;
     font-weight:bold;
     color: #777;
 }
 
-#block-panels_mini-89 {
-    
-}
 
 .teaser1 {
     float:left;
     margin-right:5px;
 }
 
-#block-views-person_view-block_1  .field-content {
+#mini-panel-person  .field-content {
     font-size:0.85em;
     line-height:1.3em;
 }
@@ -467,13 +459,13 @@ abbr {
 
 /*Person*/
 
-#block-views-person_view-block_1 .title {
+#mini-panel-person .title {
     background-color:#15727A;
     margin-top:1.5em;
     margin-bottom:0.5em;
 }
 
-#block-views-person_view-block_1 h4 {
+#mini-panel-person h4 {
     font-size:1.1em;
 }
 
