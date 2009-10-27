@@ -214,6 +214,10 @@ abbr {
     font-weight:bold;
 }
 
+.sidebar p{
+    display:inline;
+}
+
 #navigation {
     background-color: #feffa5;
 }
@@ -451,21 +455,27 @@ abbr {
     margin-right:5px;
 }
 
-#mini-panel-person  .field-content {
+#mini-panel-person  .field-content,
+#block-panels_mini-org_history  .field-content
+{
     font-size:0.85em;
     line-height:1.3em;
 }
 
 
-/*Person*/
+/*Person + Org history*/
 
-#mini-panel-person .title {
+#mini-panel-person .title,
+#block-panels_mini-org_history .title
+{
     background-color:#15727A;
     margin-top:1.5em;
     margin-bottom:0.5em;
 }
 
-#mini-panel-person h4 {
+#mini-panel-person h4,
+#block-panels_mini-org_history h4
+{
     font-size:1.1em;
 }
 
@@ -499,10 +509,10 @@ abbr {
    font-weight:bold;
 }
 
-.view-dom-id-7 {
-    border-top: 2px dashed #ccc;
-    padding-top: 1em;
-}
+/*.view-dom-id-7 {*/
+    /*border-top: 2px dashed #ccc;*/
+    /*padding-top: 1em;*/
+/*}*/
 
 .view-dom-id-7 .feed-icon {
     display:none;
