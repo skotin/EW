@@ -24,10 +24,37 @@
   <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="391" column="15" selection-start="5356" selection-end="5356" vertical-scroll-proportion="0.67130435">
+            <state line="397" column="3" selection-start="5432" selection-end="5432" vertical-scroll-proportion="-17.96">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blogapi_break_converter.module" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/blogapi_break_converter/blogapi_break_converter.module">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="303" selection-end="303" vertical-scroll-proportion="-15.272727">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blogapi.module" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/blogapi/blogapi.module">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="866" column="38" selection-start="31451" selection-end="31451" vertical-scroll-proportion="0.34200743">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="panels.info" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/panels/panels.info">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="28" selection-start="21" selection-end="28" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,24 +96,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="node.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/node.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="node-article.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/node-article.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="layout.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/basic/css/layout.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -123,6 +132,7 @@
         <option value="$PROJECT_DIR$/themes/basic/views-view--article-view.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/views-view--news.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/css/style.css" />
+        <option value="$PROJECT_DIR$/modules/blogapi/blogapi.module" />
       </list>
     </option>
   </component>
@@ -274,7 +284,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="excerpt" />
+              <option name="myItemId" value="panels" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blogapi_break_converter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,7 +360,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25380304" sideWeight="0.7962675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17614092" sideWeight="0.7962675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -367,21 +403,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="87" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/css/default.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="25" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/ctools/plugins/content_types/node_context/node_content.inc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2115" selection-end="2252" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="62" selection-start="884" selection-end="884" vertical-scroll-proportion="0.0">
@@ -454,9 +475,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/blogapi_break_converter/blogapi_break_converter.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="303" selection-end="303" vertical-scroll-proportion="-15.272727">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/panels/panels.info">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="28" selection-start="21" selection-end="28" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="391" column="15" selection-start="5356" selection-end="5356" vertical-scroll-proportion="0.67130435">
+        <state line="397" column="3" selection-start="5432" selection-end="5432" vertical-scroll-proportion="-17.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/blogapi/blogapi.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="866" column="38" selection-start="31451" selection-end="31451" vertical-scroll-proportion="0.34200743">
           <folding />
         </state>
       </provider>
