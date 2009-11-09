@@ -19,7 +19,15 @@
   * regardless of any changes in the aliasing that might happen if
   * the view is modified.
   */
-?>               
-<?php// print $output; ?>
-<!--<h4><?php print $row->node_title; ?></h4> -->
-<h4><?php print l($row->node_title, "node/".$row->nid, array('html' => 'TRUE')); ?></h4>
+?>
+<?php
+if(preg_match("/!--break--/",$output)){
+$out=split('!--break--',$output);
+    print preg_replace("/^>/",'',$out[1]);
+}else{
+    print $output;
+}
+
+
+?>
+

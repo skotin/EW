@@ -19,7 +19,7 @@
   * regardless of any changes in the aliasing that might happen if
   * the view is modified.
   */
-?>               
+?>
 <?php// print $output; ?>
 <!--<h4><?php print $row->node_title; ?></h4> -->
-<h4><?php print l($row->node_title, "node/".$row->nid, array('html' => 'TRUE')); ?></h4>
+<h2><?php print l($row->node_title, "node/".$row->nid, array('html' => 'TRUE')); ?></h2>

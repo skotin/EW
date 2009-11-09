@@ -310,7 +310,7 @@ abbr {
     padding-right: 5px;*/
 }
 
-.views-field-created {
+.front .views-field-created {
     padding-left:145px;
 }
 
@@ -543,14 +543,21 @@ abbr {
     display: none;
 }
 
-.node-type-article #main .panel-col-first {
+.node-type-article #main .panel-col-first,
+.node-type-short #main .panel-col-first
+{
     width:75%;
 }
 
-.node-type-article #main .panel-col-last {
+.node-type-article #main .panel-col-last,
+.node-type-short #main .panel-col-last
+{
     width:25%;
 }
-.node-type-article #main .panel-col-last .inside {
+.node-type-article #main .panel-col-last .inside,
+.node-type-short #main .panel-col-last .inside
+
+{
    padding-left:20px;
 }
 

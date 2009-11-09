@@ -24,73 +24,46 @@
   <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
+      <file leaf-file-name="node-article.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/node-article.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="397" column="3" selection-start="5432" selection-end="5432" vertical-scroll-proportion="-17.96">
+            <state line="8" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blogapi_break_converter.module" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/modules/blogapi_break_converter/blogapi_break_converter.module">
+      <file leaf-file-name="node-short.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/node-short.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="303" selection-end="303" vertical-scroll-proportion="-15.272727">
+            <state line="7" column="14" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blogapi.module" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/blogapi/blogapi.module">
+      <file leaf-file-name="views-view-field--article--title.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="866" column="38" selection-start="31451" selection-end="31451" vertical-scroll-proportion="0.34200743">
+            <state line="21" column="17" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="panels.info" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/modules/panels/panels.info">
+      <file leaf-file-name="views-view-field--article-page--title.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article-page--title.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="28" selection-start="21" selection-end="28" vertical-scroll-proportion="0.0">
+            <state line="12" column="27" selection-start="530" selection-end="530" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views-view--Author.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/views-view--Author.tpl.php">
+      <file leaf-file-name="views-view-field--body.tpl.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--body.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="27" selection-start="358" selection-end="358" vertical-scroll-proportion="-1.9090909">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views-view--news.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/views-view--news.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="17" selection-start="1291" selection-end="1291" vertical-scroll-proportion="-23.681818">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="node-news.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/node-news.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="10" selection-start="219" selection-end="219" vertical-scroll-proportion="-4.7727275">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views-view--article-view.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/views-view--article-view.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="12" selection-start="877" selection-end="877" vertical-scroll-proportion="-1.7272727">
+            <state line="23" column="29" selection-start="892" selection-end="892" vertical-scroll-proportion="0.600346">
               <folding />
             </state>
           </provider>
@@ -99,7 +72,34 @@
       <file leaf-file-name="layout.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/basic/css/layout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="42" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.0">
+            <state line="94" column="1" selection-start="2309" selection-end="2309" vertical-scroll-proportion="-4.2">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views-view-field--title.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--title.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="27" selection-start="853" selection-end="853" vertical-scroll-proportion="-16.727272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="node-news.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/node-news.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="10" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="node.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/basic/node.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -125,14 +125,16 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/themes/basic/views-view-field--teaser.tpl.php" />
-        <option value="$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/views-view-field--person--teaser.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/node-article.tpl.php" />
-        <option value="$PROJECT_DIR$/themes/basic/css/layout.css" />
         <option value="$PROJECT_DIR$/themes/basic/views-view--article-view.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/views-view--news.tpl.php" />
-        <option value="$PROJECT_DIR$/themes/basic/css/style.css" />
         <option value="$PROJECT_DIR$/modules/blogapi/blogapi.module" />
+        <option value="$PROJECT_DIR$/themes/basic/css/style.css" />
+        <option value="$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php" />
+        <option value="$PROJECT_DIR$/themes/basic/views-view-field--article-page--title.tpl.php" />
+        <option value="$PROJECT_DIR$/themes/basic/css/layout.css" />
+        <option value="$PROJECT_DIR$/themes/basic/views-view-field--body.tpl.php" />
       </list>
     </option>
   </component>
@@ -162,8 +164,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -218,7 +218,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sites" />
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -235,10 +243,6 @@
               <option name="myItemId" value="sites" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="all" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -250,72 +254,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="all" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="all" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="panels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="all" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blogapi_break_converter" />
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,7 +306,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17614092" sideWeight="0.7962675" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28182545" sideWeight="0.7962675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -403,21 +349,71 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/basic/template.php">
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/panels/panels.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="62" selection-start="884" selection-end="884" vertical-scroll-proportion="0.0">
+        <state line="0" column="28" selection-start="21" selection-end="28" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view--Author.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="27" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view--news.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="17" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view--article-view.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="12" selection-start="877" selection-end="877" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/blogapi/blogapi.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="866" column="38" selection-start="31451" selection-end="31451" vertical-scroll-proportion="-0.95454544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="557" column="27" selection-start="8133" selection-end="8133" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-fields--article-view.tpl.php">
+    <entry file="file://$PROJECT_DIR$/themes/basic/node-article.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="30" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.0" />
+        <state line="8" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-unformatted--article-view.tpl.php">
+    <entry file="file://$PROJECT_DIR$/themes/basic/node-short.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="7" column="14" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="17" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article-page--title.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="27" selection-start="530" selection-end="530" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/node-news.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="10" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/node.tpl.php">
@@ -425,80 +421,30 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/node-article.tpl.php">
+    <entry file="file://$PROJECT_DIR$/themes/basic/page.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" />
+        <state line="25" column="18" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/css/layout.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="42" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/page.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="18" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/node-news.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="10" selection-start="219" selection-end="219" vertical-scroll-proportion="-4.7727275">
+        <state line="94" column="1" selection-start="2309" selection-end="2309" vertical-scroll-proportion="-4.2">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/views-view--article-view.tpl.php">
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--title.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="12" selection-start="877" selection-end="877" vertical-scroll-proportion="-1.7272727">
+        <state line="20" column="27" selection-start="853" selection-end="853" vertical-scroll-proportion="-16.727272">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/views-view--Author.tpl.php">
+    <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--body.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="27" selection-start="358" selection-end="358" vertical-scroll-proportion="-1.9090909">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/views-view--news.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="17" selection-start="1291" selection-end="1291" vertical-scroll-proportion="-23.681818">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/excerpt/excerpt.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="42" selection-start="703" selection-end="703" vertical-scroll-proportion="-4.893617">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/blogapi_break_converter/blogapi_break_converter.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="303" selection-end="303" vertical-scroll-proportion="-15.272727">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/panels/panels.info">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="28" selection-start="21" selection-end="28" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="397" column="3" selection-start="5432" selection-end="5432" vertical-scroll-proportion="-17.96">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/blogapi/blogapi.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="866" column="38" selection-start="31451" selection-end="31451" vertical-scroll-proportion="0.34200743">
+        <state line="23" column="29" selection-start="892" selection-end="892" vertical-scroll-proportion="0.600346">
           <folding />
         </state>
       </provider>
