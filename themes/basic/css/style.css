@@ -344,6 +344,7 @@ abbr {
     margin-right: 5px;
     margin-bottom: -3px;
     margin-top:-17px;
+
 }
 
 .views-field-teaser-1  a,
@@ -363,6 +364,7 @@ abbr {
 .views-field-teaser p
 {
     display: inline;
+
 }
 
 .field-content .avtor {
@@ -381,13 +383,25 @@ abbr {
     font-size:0.9em;
 }
 
+#mini-panel-article {
+    padding-right:30px;
+}
+
+#mini-panel-article .views-field-teaser {
+    text-align:justify;
+}
+
 /*Short articles*/
 #short_articles {
     padding:10px;
     background-color:beige;
 }
 
-#short_articles h2{
+#short_articles h2,
+#mini-panel-article_page .panel-col-last h2,
+#mini-panel-person_page .panel-col-last h2,
+#mini-panel-news_page .panel-col-last h2
+{
     font-size:1.1em;
     color: #aaa;
     font-weight:bold;
@@ -484,13 +498,17 @@ abbr {
 }
 
 #mini-panel-news  .views-field-created,
-#mini-panel-news   h4
+#mini-panel-news   h4,
+#mini-panel-article_page .view-article-author  .views-field-created,
+#mini-panel-article_page .view-article-author  h4
 {
     display:inline;
 
 }
 
-#mini-panel-news  .views-field-created {
+#mini-panel-news  .views-field-created,
+#mini-panel-article_page .view-article-author  .views-field-created
+{
     font-size:0.9em;
     font-weight:bold;
     color: #777;
@@ -530,7 +548,12 @@ abbr {
 
 /*Article*/
 
-.node-type-article #content-header h1.title{
+.node-type-article #content-header h1.title,
+.node-type-persona #content-header h1.title,
+.node-type-short #content-header h1.title,
+.page-persons_archive #content-header h1.title,
+.node-type-news #content-header h1.title
+{
     display: none;
 }
 
@@ -544,12 +567,18 @@ abbr {
 }
 
 .node-type-article #main .panel-col-first,
+.node-type-news #main .panel-col-first,
+.node-type-persona #main .panel-col-first,
+.page-persons_archive #main .panel-col-first,
 .node-type-short #main .panel-col-first
 {
     width:75%;
 }
 
 .node-type-article #main .panel-col-last,
+.node-type-news #main .panel-col-last,
+.node-type-persona #main .panel-col-last,
+.page-persons_archive #main .panel-col-last,
 .node-type-short #main .panel-col-last
 {
     width:25%;
@@ -561,26 +590,82 @@ abbr {
    padding-left:20px;
 }
 
-.node-type-article h2 {
+.node-type-article h2,
+.node-type-short h2,
+.view-news-page h2
+
+{
    font-weight:bold;
 }
 
-/*.view-dom-id-7 {*/
-    /*border-top: 2px dashed #ccc;*/
-    /*padding-top: 1em;*/
-/*}*/
 
 
+.view-article-page,
+.view-news-page
+{
+    padding-right:15px;
+}
 
+.view-article-page .field-content p,
+.node-type-persona .field-content p,
+.page-persons_archive .field-content p,
+.view-news-page .field-content p
+
+{
+    text-align:justify;
+    font-size:1.2em;
+    line-height:1.6em;
+
+}
+.view-person-page h4 {
+    font-size:1.8em; 
+}
+.view-article-page h2 a,
+.view-person-page h4 a,
+.view-news-page h2 a
+
+{
+    color: #333;
+    letter-spacing:-0.05em;
+}
+
+.view-news-page .views-field-created,
+.view-news-page h2
+{
+    display:inline;
+}
+
+.view-news-page .views-field-created {
+    font-size:2em;
+}
+
+#mini-panel-news_page .view-news-page .views-field-body {
+    padding-top:2em;
+}
+
+.view-article-page h2 a:hover,
+.view-person-page h4 a:hover,
+.view-news-page h2 a:hover
+
+{
+    color: #333;
+    text-decoration:none;
+    cursor:default;
+}
 /*Author block*/
 
 #author-blok li{
-list-style:square;
+    list-style:none;
+    background:url(images/blt.gif) no-repeat 0 50%;
+    padding-left:15px;
+    padding-bottom:3px;
+    font-size:0.85em;
 }
 
 /*Author articles*/
 
-#author_articles h2{
+#author_articles h2
+{
     background-color:#15727A;
     color: #fff;
     font-size: 1em;
@@ -593,11 +678,16 @@ list-style:square;
     font-size:0.9em;
 
 }
-
+#mini-panel-article_page h4,
+#mini-panel-news_page h4
+{
+    font-size:0.9em;
+}
 
 /*Article archive*/
 
-.page-article-archive h3, .page-article-archive #content h1 {
+.page-article-archive h3,
+.page-article-archive #content h1 {
     display: none;
 }
 .page-article-archive #main{
@@ -705,4 +795,119 @@ font-size:1.1em;
 
 #block-menu-primary-links h3 {
     display: none;
+}
+
+
+/*Short Article*/
+
+#mini-panel-short {
+    padding:10px;
+}
+#mini-panel-short .view-content {
+    padding-bottom:0;
+}
+.view-short-article .views-field-teaser {
+    font-size:0.85em;
+    color: #555;
+    padding:0;
+}
+
+.view-short-article h4, .view-short-article .views-field-title{
+    padding:0;
+    margin: 0;
+    line-height:0.9em;
+}
+
+/*Author panel*/
+
+.page-user .tabs {
+    display:block;
+}
+
+/*Author sidebar*/
+
+#mini-panel-article_page .panel-col-last .inside,
+#mini-panel-person_page .panel-col-last .inside,
+#mini-panel-news_page .panel-col-last .inside
+
+{
+    padding-top:1em;
+    padding-bottom:7em;
+    background: url(images/author_bg.gif) repeat-x 0 0;
+
+}
+
+#mini-panel-article_page .panel-col-last h3,
+#mini-panel-person_page .panel-col-last h3,
+#mini-panel-news_page .panel-col-last h3
+{
+    font-size: 1.3em;
+    padding-top:0.5em;
+    color: #333;
+}
+
+#mini-panel-article_page .panel-col-last #author-blok {
+    padding-left:0;
+}
+
+#mini-panel-news_page .panel-col-last .inside,
+#mini-panel-person_page .panel-col-last .inside
+{
+    padding:10px;
+    padding-bottom:16em;
+}
+
+#mini-panel-news_page .panel-col-last .feed-icon {
+    margin-top:-28px;
+}
+
+#mini-panel-news_page .panel-col-last .view-content {
+    padding-left:5px;
+    padding-top:10px;
+    padding-right:5px;
+}
+
+#mini-panel-news_page .panel-col-last .created,
+#mini-panel-news_page .panel-col-last .views-field-title h4
+{
+    display:inline;
+}
+
+/*Calender Person Archive*/
+
+#block-panels_mini-persona_archive .panel-col-last h2 {
+    display:none;
+}
+
+#block-panels_mini-persona_archive .panel-col-last .inside {
+    padding:0;
+    margin-top:-45px;
+
+}
+
+#block-panels_mini-persona_archive h4 {
+    font-size:1.8em;
+}
+
+.view-calendar .feed-icon {
+    display:none;
+}
+
+#block-panels_mini-persona_archive img.teaser{
+    display:none;
+
+}
+
+/*All links*/
+
+.title .all {
+    font-weight:normal;
+    text-align:right;
+    padding-left:85px;
+    color: #ccc;
+    font-size:0.85em;
+}
+
+#block-panels_mini-org_history .all {
+    padding:15px;
 }
