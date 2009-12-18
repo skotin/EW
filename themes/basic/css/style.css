@@ -217,12 +217,13 @@ abbr {
 
 .sidebar p{
     display:inline;
-    font-size: 1em;
-    line-height:0.3em;
+    font-size: 1.1em;
+    line-height:1.5em;
 }
 
 #navigation {
     background-color: #feffa5;
+    display:none;
 }
 
 /*Search*/
@@ -244,9 +245,9 @@ abbr {
 
 .sidebar  .title
 {
-    background-color: #999;
+    background-color: #aaa;
     color: #fff;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     padding-left: 5px;
     margin-bottom: 0.5em;
@@ -267,8 +268,17 @@ abbr {
 
  #sidebar-second .title
  {
-     background-color:#15727A;
+     padding-top:5px;
+     padding-bottom:5px;
+     /*background-color:#15727A;*/
  }
+
+ #sidebar-second .views-field-teaser,
+ #sidebar-second .views-field-title
+ {
+     padding-left:5px;
+
+}
 
 /*Glavred*/
 
@@ -278,6 +288,10 @@ abbr {
 
 #block-panels_mini-56 .views-field-teaser .field-content {
     margin: 0 5px;
+}
+
+#block-panels_mini-editorial {
+    margin-top:1.5em;
 }
 
 #block-panels_mini-editorial .teaser {
@@ -294,13 +308,13 @@ abbr {
 }
 
 .views-field-title {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 
 }
 
 .views-field-created {
-    font-size: 0.9em;
+    font-size: 1.1em;
     color: #777;
     font-weight:bold;
     display:inline;
@@ -311,13 +325,21 @@ abbr {
 }
 
 .front .views-field-created {
-    padding-left:145px;
+    padding-left:150px;
 }
 
 .sidebar .views-field-created,
 #mini-panel-short .views-field-created
 {
     padding-left:0px;
+}
+
+#mini-panel-short {
+    font-size:0.9em;
+}
+#mini-panel-short .views-field-title {
+    font-size:1.1em;
+    line-height:1.5em;
 }
 
 /*Articles*/
@@ -341,7 +363,7 @@ abbr {
 
 .teaser {
     float: left;
-    margin-right: 5px;
+    margin-right: 10px;
     margin-bottom: -3px;
     margin-top:-17px;
 
@@ -368,7 +390,7 @@ abbr {
 }
 
 .field-content .avtor {
-    font-size: 1em;
+    font-size: 1.1em;
     color: #777;
     font-weight:bold;
     padding-left:4px;
@@ -384,11 +406,13 @@ abbr {
 }
 
 #mini-panel-article {
-    padding-right:30px;
+    padding-right:10px;
 }
 
 #mini-panel-article .views-field-teaser {
     text-align:justify;
+    font-size:1.1em;
+    line-height:1.5em;
 }
 
 /*Short articles*/
@@ -411,6 +435,22 @@ abbr {
     /*font-size:0.9em;*/
      font-size:1.1em;
 }
+
+#short_articles .views-field-teaser {
+    text-align:left;
+    font-size: 1em;
+}
+
+#short_articles .field-content .avtor
+{
+    font-size:1em;
+}
+#short_articles .views-field-created .field-content .created
+{
+    font-size:0.9em;
+}
+
+
 /*Youtube*/
 
 
@@ -425,6 +465,13 @@ abbr {
     margin-bottom:-20px;
 }
 /*Rating*/
+
+#block-panels_mini-Rating .title {
+
+    background-color:#15727A;
+}
+
+
 #block-views-Rating-block_1 .title{
     margin-bottom:1em;
 }
@@ -452,6 +499,10 @@ abbr {
     color:#aaa;
 }
 
+/*Annonce*/
+#block-panels_mini-annonce .title {
+    background-color:#15727A;
+}
 /*Audio*/
 
 #block-views-audio-block_1 ul {
@@ -481,7 +532,7 @@ abbr {
 
  #sidebar-second  .title
  {
-     background-color:#15727A;
+     /*background-color:#15727A;*/
  }
 
 .feed-icon {
@@ -801,7 +852,7 @@ font-size:1.1em;
 /*Short Article*/
 
 #mini-panel-short {
-    padding:10px;
+    /*padding:10px;*/
 }
 #mini-panel-short .view-content {
     padding-bottom:0;
@@ -812,11 +863,6 @@ font-size:1.1em;
     padding:0;
 }
 
-.view-short-article h4, .view-short-article .views-field-title{
-    padding:0;
-    margin: 0;
-    line-height:0.9em;
-}
 
 /*Author panel*/
 

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager" verified="true">
-    <list default="true" readonly="true" id="f84ac1f5-e551-463b-ab16-8ac327fa1632" name="Default" comment="" />
+    <list default="true" readonly="true" id="f84ac1f5-e551-463b-ab16-8ac327fa1632" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\website\home\test1.ru\www\themes\basic\views-view-field--person-view--teaser-1.tpl.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\website\home\test1.ru\www\sites\default\files\pictures\picture-3.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\website\home\test1.ru\www\sites\default\files\imagecache\teasr\imagecache_sample.png" afterPath="" />
+    </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,15 +29,6 @@
   <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views-view-field--teaser.tpl.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--teaser.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="17" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views-view-field--teaser-1.tpl.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--teaser-1.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,10 +47,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="911" column="14" selection-start="14208" selection-end="14208" vertical-scroll-proportion="0.88257575">
+            <state line="201" column="18" selection-start="2617" selection-end="2623" vertical-scroll-proportion="-7.24">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/basic/css/layout.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="242" column="52" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.475">
               <folding />
             </state>
           </provider>
@@ -63,7 +68,7 @@
       <file leaf-file-name="node-persona.tpl.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/basic/node-persona.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -132,10 +137,10 @@
         <option value="$PROJECT_DIR$/modules/blogapi/blogapi.module" />
         <option value="$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/views-view-field--article-page--title.tpl.php" />
-        <option value="$PROJECT_DIR$/themes/basic/css/layout.css" />
         <option value="$PROJECT_DIR$/themes/basic/views-view-field--body.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/views-view-field--short-article--teaser.tpl.php" />
         <option value="$PROJECT_DIR$/themes/basic/css/style.css" />
+        <option value="$PROJECT_DIR$/themes/basic/css/layout.css" />
       </list>
     </option>
   </component>
@@ -165,8 +170,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,6 +224,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="sites" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -241,23 +266,36 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PhpRunConfigurationType" factoryName="PHP" break_at_first_line="false" browser="DEFAULT" open_page_automatically="true" session_id="" session_after_first_page="false" web_path="">
       <option name="mappings">
         <list />
       </option>
-      <method />
+      <method>
+        <option name="FtpUpload" enabled="false" />
+      </method>
     </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" class_file="" class="" directory="" file="" method_file="" method="" scope="Class">
-      <method />
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" class_file="" class="" config_file="" directory="" file="" is_config_by_xml="false" is_groups_set="false" method_class="" method_file="" method="" scope="Class">
+      <option name="excludedGroups">
+        <set />
+      </option>
+      <option name="includedGroups">
+        <set />
+      </option>
+      <method>
+        <option name="FtpUpload" enabled="false" />
+      </method>
     </configuration>
     <list size="0" />
   </component>
@@ -278,15 +316,22 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1261082074546</created>
+      <updated>1261082074546</updated>
+    </task>
+    <servers />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1279" height="770" extended-state="0" />
+    <frame x="-2" y="1" width="1276" height="770" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28903124" sideWeight="0.7962675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28892455" sideWeight="0.7962675" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -333,11 +378,6 @@
         <state line="7" column="14" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/css/layout.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="1" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--title.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="27" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0" />
@@ -355,44 +395,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/node-article.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="8" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--teaser.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="22" column="17" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--teaser-1.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="25" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="40" column="25" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--short-article--teaser.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="26" column="0" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/node-persona.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article--title.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="17" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="21" column="17" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--article-page--title.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="27" selection-start="882" selection-end="882" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="22" column="27" selection-start="882" selection-end="882" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--news-page--title.tpl.php">
@@ -402,28 +435,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/views-view-field--body.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="23" column="29" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/node-news.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="57" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/basic/node-persona.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1" column="57" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/basic/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="911" column="14" selection-start="14208" selection-end="14208" vertical-scroll-proportion="0.88257575">
+        <state line="201" column="18" selection-start="2617" selection-end="2623" vertical-scroll-proportion="-7.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/basic/css/layout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="242" column="52" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.475">
           <folding />
         </state>
       </provider>
