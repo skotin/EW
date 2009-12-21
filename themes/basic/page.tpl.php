@@ -57,14 +57,14 @@
     
       <div id="content">
         <div id="content-inner" class="inner column center">
-          <?php print $feed_icons; ?>
+
           <?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
             <div id="content-header">
 
               <?php print $breadcrumb; ?>
 
               <?php if ($title): ?>
-                <h1 class="title"><?php print $title; ?></h1>
+                <h1 class="title"><?php print t($title); ?></h1>
               <?php endif; ?>
 
               <?php if ($mission): ?>
@@ -81,6 +81,7 @@
 
             </div> <!-- /#content-header -->
           <?php endif; ?>
+
           <?php if ($content_top): ?>
             <div id="content-top">
               <?php print $content_top; ?>
@@ -134,6 +135,7 @@
         <div id="footer">
           <?php print $footer_message; ?>
           <?php print $footer_block; ?>
+          <!-- <?php print $feed_icons; ?>  -->
         </div> <!-- /footer -->
       <?php endif; ?>
 

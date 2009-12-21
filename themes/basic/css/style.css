@@ -243,6 +243,11 @@ abbr {
     margin: 5px;
 }
 
+.tagadelic_views a {
+    color:#bbb;
+    font-weight:bold;
+}
+
 .sidebar  .title
 {
     background-color: #aaa;
@@ -301,21 +306,26 @@ abbr {
 }
 .node-type-article-eng .view-article-page-eng .views-field-title h4,
 .node-type-short .view-article-page-eng .views-field-title h4,
+.node-type-short-eng .view-article-page-eng .views-field-title h4,
+.section-authors  .views-field-title h4,
 .node-type-editorial-eng .view-article-page-eng .views-field-title h4
 {
     margin-bottom:2em;
 }
 .node-type-article-eng .view-article-page-eng .views-field-title h4 a,
 .node-type-short .view-article-page-eng .views-field-title h4 a,
+.node-type-short-eng .view-article-page-eng .views-field-title h4 a,
 .node-type-editorial-eng .view-article-page-eng .views-field-title h4 a
 {
     font-size:2em;
+    line-height:1.1em;
     color: #333;
     font-weight:bold;
 }
 
 .node-type-article-eng .view-article-page-eng .views-field-title h4 a:hover,
 .node-type-short .view-article-page-eng .views-field-title h4 a:hover,
+.node-type-short-eng .view-article-page-eng .views-field-title h4 a:hover,
 .node-type-editorial-eng .view-article-page-eng .views-field-title h4 a:hover{
     text-decoration:none;
     color:#333;
@@ -352,17 +362,53 @@ abbr {
 }
 
 .sidebar .views-field-created,
-#mini-panel-short .views-field-created
+#mini-panel-short .views-field-created,
+#mini-panel-short_eng .views-field-created
 {
-    padding-left:0px;
+    padding-left:0;
 }
 
-#mini-panel-short {
+#mini-panel-short,
+.section-authors #block-panels_mini-author_page  .panel-col-last,    
+.section-authors #mini-panel-author_page_eng  .panel-col-last,
+#mini-panel-short_eng
+{
     font-size:0.9em;
 }
-#mini-panel-short .views-field-title {
-    font-size:1.1em;
-    line-height:1.5em;
+#mini-panel-short .views-field-title h4,
+.section-authors #block-panels_mini-author_page  .panel-col-last .views-field-title h4,
+.section-authors #mini-panel-author_page_eng .panel-col-last .views-field-title h4
+{
+    font-size:0.9em;
+    line-height:1.1em;
+    margin-bottom:1em;
+}
+#mini-panel-short_eng .views-field-title h4,
+.section-authors #block-panels_mini-author_page  .panel-col-last .views-field-title h4,
+.section-authors #mini-panel-author_page_eng .panel-col-last .views-field-title h4
+{
+    font-size:0.9em;
+    line-height:1.1em;
+    margin-bottom:1em;
+}
+
+#mini-panel-short_eng .panel-panel,
+#mini-panel-short .panel-panel
+{
+    border-right: dotted 2px #fff;
+}
+
+#mini-panel-short_eng .panel-panel .inside,
+#mini-panel-short .panel-panel  .inside
+{
+    padding-left:5px;
+}
+
+
+#mini-panel-short_eng .panel-col-last.panel-panel,
+#mini-panel-short .panel-col-last.panel-panel
+{
+    border-right: 0;
 }
 
 /*Articles*/
@@ -453,6 +499,7 @@ abbr {
 {
     padding:10px;
     background-color:beige;
+    margin-bottom:2em;
 }
 
 #short_articles h2,
@@ -460,6 +507,8 @@ abbr {
 #mini-panel-article_page_eng .panel-col-last h2,
 #mini-panel-article_page .panel-col-last h2,
 #mini-panel-person_page .panel-col-last h2,
+.section-authors #block-panels_mini-author_page .panel-col-last h2,
+.section-authors #mini-panel-author_page_eng .panel-col-last h2,
 #mini-panel-news_page .panel-col-last h2
 {
     font-size:1.1em;
@@ -483,11 +532,13 @@ abbr {
     margin-top:-0.7em;
 }
 
-#short_articles .field-content .avtor
+#short_articles .field-content .avtor,
+#short_articles_eng .field-content .avtor
 {
     font-size:1em;
 }
-#short_articles .views-field-created .field-content .created
+#short_articles .views-field-created .field-content .created,
+#short_articles_eng .views-field-created .field-content .created
 {
     font-size:0.9em;
 }
@@ -660,6 +711,7 @@ abbr {
 .node-type-editorial-eng #content-header h1.title,
 .node-type-persona #content-header h1.title,
 .node-type-short #content-header h1.title,
+.node-type-short-eng #content-header h1.title,
 .page-persons_archive #content-header h1.title,
 .node-type-news #content-header h1.title
 {
@@ -668,8 +720,9 @@ abbr {
 
 .node-type-article #main,
 .node-type-article-eng #main,
-.node-type-short #main,
+.node-type-short-eng #main,
 .node-type-editorial-eng #main,
+.section-authors #main,
 .node-type-editorial #main
 {
     padding-top:1em;
@@ -689,7 +742,9 @@ abbr {
 .node-type-news #main .panel-col-first,
 .node-type-persona #main .panel-col-first,
 .page-persons_archive #main .panel-col-first,
-.node-type-short #main .panel-col-first
+.node-type-short #main .panel-col-first,
+.section-authors #main .panel-col-first,
+.node-type-short-eng #main .panel-col-first
 {
     width:75%;
 }
@@ -701,7 +756,9 @@ abbr {
 .node-type-news #main .panel-col-last,
 .node-type-persona #main .panel-col-last,
 .page-persons_archive #main .panel-col-last,
-.node-type-short #main .panel-col-last
+.node-type-short #main .panel-col-last,
+.section-authors #main .panel-col-last,
+.node-type-short-eng #main .panel-col-last
 {
     width:25%;
 }
@@ -709,7 +766,9 @@ abbr {
 .node-type-article-eng #main .panel-col-last .inside,
 .node-type-editorial #main .panel-col-last .inside,
 .node-type-editorial-eng #main .panel-col-last .inside,
-.node-type-short #main .panel-col-last .inside
+.node-type-short #main .panel-col-last .inside,
+.section-authors #main .panel-col-last .inside,
+.node-type-short-eng #main .panel-col-last .inside
 
 {
    padding-left:20px;
@@ -720,6 +779,7 @@ abbr {
 .node-type-editorial h2,
 .node-type-editorial-eng h2,
 .node-type-short h2,
+.node-type-short-eng h2,
 .view-news-page h2
 
 {
@@ -740,9 +800,11 @@ abbr {
 .node-type-editorial .field-content p,
 .node-type-article-eng .field-content p,
 .node-type-short .field-content p,
+.node-type-short-eng .field-content p,
 .node-type-editorial-eng .field-content p,
 .page-persons_archive .field-content p,
 .page-taxonomy .field-content p,
+.section-authors .field-content p,
 .page-article-archive .field-content p,
 .view-news-page .field-content p
 
@@ -818,6 +880,25 @@ abbr {
 #mini-panel-news_page h4
 {
     font-size:0.9em;
+}
+
+
+#mini-panel-article_page_eng .view-article-author-eng .views-field-created,
+.section-authors #mini-panel-author_page_eng  .panel-col-last .views-field-created,
+.section-authors #block-panels_mini-author_page  .panel-col-last .views-field-created
+{
+    font-size:0.9em;
+    padding-right:5px;
+    line-height:1.4em;
+}
+
+#mini-panel-article_page_eng .view-article-author-eng h4,
+.section-authors #block-panels_mini-author_page  .panel-col-last h4,
+.section-authors #mini-panel-author_page_eng  .panel-col-last h4
+{
+    font-size: 0.7em;
+    padding-left:0;
+    padding-right: 5px;
 }
 
 /*Article archive*/
@@ -936,13 +1017,15 @@ font-size:1.1em;
 
 /*Short Article*/
 
-#mini-panel-short {
-    /*padding:10px;*/
-}
-#mini-panel-short .view-content {
+
+#mini-panel-short .view-content,
+#mini-panel-short_eng .view-content
+{
     padding-bottom:0;
 }
-.view-short-article .views-field-teaser {
+.view-short-article .views-field-teaser,
+.view-short-article .views-field-teaser
+{
     font-size:0.85em;
     color: #555;
     padding:0;
@@ -959,6 +1042,8 @@ font-size:1.1em;
 
 #mini-panel-article_page .panel-col-last .inside,
 #mini-panel-article_page_eng .panel-col-last .inside,
+.section-authors #block-panels_mini-author_page  .panel-col-last .inside,
+.section-authors #mini-panel-author_page_eng  .panel-col-last .inside,
 #mini-panel-person_page .panel-col-last .inside,
 #mini-panel-news_page .panel-col-last .inside
 
@@ -986,6 +1071,8 @@ font-size:1.1em;
 }
 
 #mini-panel-news_page .panel-col-last .inside,
+.section-authors #mini-panel-author_page_eng .panel-col-last .inside,
+.section-authors #block-panels_mini-author_page .panel-col-last .inside,
 #mini-panel-person_page .panel-col-last .inside
 {
     padding:10px;
@@ -1102,12 +1189,69 @@ font-size:1.1em;
 
 
 /*Authors*/
-.section-authors .tabs,.section-authors h3, .section-authors h1, .page-user #content-area    {
-  /*display: none;*/
+.section-authors .tabs, .section-authors h3, .section-authors h1 , .section-authors #content-area   {
+  display: none;
 }
 
 .front #content-area {
     display: none;
     
 }
+
+/*Author page*/
+
+.section-authors .picture {
+    width:195px;
+    float:left;
+    margin-right:10px;
+}
+
+
+.section-authors  .views-field-value-9,
+.section-authors  .avtor
+{
+    font-size:1.5em;
+    font-weight:bold;
+    margin-bottom:0.5em;
+}
+.section-authors  .views-field-value-5,
+.section-authors  .views-field-value-2
+{
+    clear:left;
+}
+
+.view-author-page {
+    padding-right:15px;
+}
+
+
+/*Switcher */
+
+#block-locale-0 {
+    text-align:right;
+    float:right;
+    z-index:100;
+    padding-right:13px;
+}
+
+#block-locale-0 li {
+    list-style:none;
+    display:inline; 
+    font-size: 0.7em;
+}
+
+#block-locale-0 li a {
+    color:#fff;
+}
+
+#block-locale-0 li.active a {
+    color:#ccc;
+}
+#block-locale-0 li.first {
+    border-right:solid 1px #fff;
+    padding-right:3px;
+}
+
+
+
 
