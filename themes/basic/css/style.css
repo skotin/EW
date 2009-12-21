@@ -223,7 +223,7 @@ abbr {
 
 #navigation {
     background-color: #feffa5;
-    display:none;
+    /*display:none;*/
 }
 
 /*Search*/
@@ -290,12 +290,35 @@ abbr {
     margin: 0 5px;
 }
 
-#block-panels_mini-editorial {
+#block-panels_mini-editorial,
+#block-panels_mini-editorial_eng
+{
     margin-top:1.5em;
 }
 
 #block-panels_mini-editorial .teaser {
-    display: none;
+    /*display: none;*/
+}
+.node-type-article-eng .view-article-page-eng .views-field-title h4,
+.node-type-short .view-article-page-eng .views-field-title h4,
+.node-type-editorial-eng .view-article-page-eng .views-field-title h4
+{
+    margin-bottom:2em;
+}
+.node-type-article-eng .view-article-page-eng .views-field-title h4 a,
+.node-type-short .view-article-page-eng .views-field-title h4 a,
+.node-type-editorial-eng .view-article-page-eng .views-field-title h4 a
+{
+    font-size:2em;
+    color: #333;
+    font-weight:bold;
+}
+
+.node-type-article-eng .view-article-page-eng .views-field-title h4 a:hover,
+.node-type-short .view-article-page-eng .views-field-title h4 a:hover,
+.node-type-editorial-eng .view-article-page-eng .views-field-title h4 a:hover{
+    text-decoration:none;
+    color:#333;
 }
 
 .view-GlavRedArticle h4 {
@@ -405,23 +428,36 @@ abbr {
     font-size:0.9em;
 }
 
-#mini-panel-article {
+#mini-panel-article,
+#mini-panel-article_eng
+{
     padding-right:10px;
+    padding-top:20px;
 }
 
-#mini-panel-article .views-field-teaser {
+#mini-panel-article .views-field-teaser,
+#mini-panel-article_eng .views-field-teaser
+{
     text-align:justify;
     font-size:1.1em;
     line-height:1.5em;
 }
 
+#mini-panel-article .views-field-title {
+    margin-bottom:1em;
+}
+
 /*Short articles*/
-#short_articles {
+#short_articles,
+#short_articles_eng
+{
     padding:10px;
     background-color:beige;
 }
 
 #short_articles h2,
+#short_articles_eng h2,
+#mini-panel-article_page_eng .panel-col-last h2,
 #mini-panel-article_page .panel-col-last h2,
 #mini-panel-person_page .panel-col-last h2,
 #mini-panel-news_page .panel-col-last h2
@@ -431,14 +467,20 @@ abbr {
     font-weight:bold;
 }
 
-#short_articles h4 {
+#short_articles h4,
+#short_articles_eng h4
+{
     /*font-size:0.9em;*/
      font-size:1.1em;
+    
 }
 
-#short_articles .views-field-teaser {
+#short_articles .views-field-teaser,
+#short_articles_eng .views-field-teaser
+{
     text-align:left;
     font-size: 1em;
+    margin-top:-0.7em;
 }
 
 #short_articles .field-content .avtor
@@ -547,18 +589,30 @@ abbr {
     margin-top:-11px;
     margin-right:1px;
 }
+.section-category .feed-icon {
+    display:block;
+    float:right;
+}
+
+.section-category  #content .panel-col-first {
+    width:70%;
+}
+
 
 #mini-panel-news  .views-field-created,
 #mini-panel-news   h4,
 #mini-panel-article_page .view-article-author  .views-field-created,
-#mini-panel-article_page .view-article-author  h4
+#mini-panel-article_page .view-article-author  h4,
+#mini-panel-article_page_eng .view-article-author  .views-field-created,
+#mini-panel-article_page_eng .view-article-author  h4
 {
     display:inline;
 
 }
 
 #mini-panel-news  .views-field-created,
-#mini-panel-article_page .view-article-author  .views-field-created
+#mini-panel-article_page .view-article-author  .views-field-created,
+#mini-panel-article_page_eng .view-article-author  .views-field-created
 {
     font-size:0.9em;
     font-weight:bold;
@@ -568,7 +622,8 @@ abbr {
 
 .teaser1 {
     float:left;
-    margin-right:5px;
+    margin-right:10px;
+    margin-top:5px;
 }
 
 #mini-panel-person  .field-content,
@@ -599,7 +654,10 @@ abbr {
 
 /*Article*/
 
+.node-type-article-eng #content-header h1.title,
 .node-type-article #content-header h1.title,
+.node-type-editorial #content-header h1.title,
+.node-type-editorial-eng #content-header h1.title,
 .node-type-persona #content-header h1.title,
 .node-type-short #content-header h1.title,
 .page-persons_archive #content-header h1.title,
@@ -608,16 +666,26 @@ abbr {
     display: none;
 }
 
-.node-type-article #main {
+.node-type-article #main,
+.node-type-article-eng #main,
+.node-type-short #main,
+.node-type-editorial-eng #main,
+.node-type-editorial #main
+{
     padding-top:1em;
     padding-left:20px;
 }
 
-.node-type-article #main h3.title{
+.node-type-article #main h3.title,
+.node-type-article-eng #main h3.title
+{
     display: none;
 }
 
 .node-type-article #main .panel-col-first,
+.node-type-article-eng #main .panel-col-first,
+.node-type-editorial #main .panel-col-first,
+.node-type-editorial-eng #main .panel-col-first,
 .node-type-news #main .panel-col-first,
 .node-type-persona #main .panel-col-first,
 .page-persons_archive #main .panel-col-first,
@@ -627,6 +695,9 @@ abbr {
 }
 
 .node-type-article #main .panel-col-last,
+.node-type-article-eng #main .panel-col-last,
+.node-type-editorial-eng #main .panel-col-last,
+.node-type-editorial #main .panel-col-last,
 .node-type-news #main .panel-col-last,
 .node-type-persona #main .panel-col-last,
 .page-persons_archive #main .panel-col-last,
@@ -635,6 +706,9 @@ abbr {
     width:25%;
 }
 .node-type-article #main .panel-col-last .inside,
+.node-type-article-eng #main .panel-col-last .inside,
+.node-type-editorial #main .panel-col-last .inside,
+.node-type-editorial-eng #main .panel-col-last .inside,
 .node-type-short #main .panel-col-last .inside
 
 {
@@ -642,6 +716,9 @@ abbr {
 }
 
 .node-type-article h2,
+.node-type-article-eng h2,
+.node-type-editorial h2,
+.node-type-editorial-eng h2,
 .node-type-short h2,
 .view-news-page h2
 
@@ -652,6 +729,7 @@ abbr {
 
 
 .view-article-page,
+.view-article-page-eng,
 .view-news-page
 {
     padding-right:15px;
@@ -659,7 +737,13 @@ abbr {
 
 .view-article-page .field-content p,
 .node-type-persona .field-content p,
+.node-type-editorial .field-content p,
+.node-type-article-eng .field-content p,
+.node-type-short .field-content p,
+.node-type-editorial-eng .field-content p,
 .page-persons_archive .field-content p,
+.page-taxonomy .field-content p,
+.page-article-archive .field-content p,
 .view-news-page .field-content p
 
 {
@@ -730,6 +814,7 @@ abbr {
 
 }
 #mini-panel-article_page h4,
+#mini-panel-article_page_eng h4,
 #mini-panel-news_page h4
 {
     font-size:0.9em;
@@ -739,7 +824,7 @@ abbr {
 
 .page-article-archive h3,
 .page-article-archive #content h1 {
-    display: none;
+    /*display: none;*/
 }
 .page-article-archive #main{
     padding-top:1em;
@@ -873,6 +958,7 @@ font-size:1.1em;
 /*Author sidebar*/
 
 #mini-panel-article_page .panel-col-last .inside,
+#mini-panel-article_page_eng .panel-col-last .inside,
 #mini-panel-person_page .panel-col-last .inside,
 #mini-panel-news_page .panel-col-last .inside
 
@@ -883,6 +969,7 @@ font-size:1.1em;
 
 }
 
+#mini-panel-article_page_eng .panel-col-last h3,
 #mini-panel-article_page .panel-col-last h3,
 #mini-panel-person_page .panel-col-last h3,
 #mini-panel-news_page .panel-col-last h3
@@ -892,7 +979,9 @@ font-size:1.1em;
     color: #333;
 }
 
-#mini-panel-article_page .panel-col-last #author-blok {
+#mini-panel-article_page .panel-col-last #author-blok,
+#mini-panel-article_page_eng .panel-col-last #author-blok
+{
     padding-left:0;
 }
 
@@ -957,3 +1046,68 @@ font-size:1.1em;
 #block-panels_mini-org_history .all {
     padding:15px;
 }
+
+
+/*Read more*/
+
+.views-field-view-node {
+   text-align:right;
+    font-weight:bold;
+    margin-right:0px;
+}
+
+
+.views-field-view-node a {
+    padding-left:15px;
+    background:url(images/arrow_lit.gif) no-repeat 0 70%;
+}
+
+.not-front #content .panel-col-last  p{
+    display: inline;
+}
+
+.not-front #content .panel-col-last  .views-field-created {
+   float:left; 
+}
+
+.not-front #content .panel-col-last .views-field-teaser, .not-front #content .panel-col-last .views-field-teaser .field-content {
+    display: inline;
+}
+
+.not-front .panel-col-last .views-field-view-node {
+    display:inline;
+
+}
+
+#content .panel-col-last .views-field-view-node a {
+    text-indent:-15000px;
+    color:beige;
+
+}
+
+#content .panel-col-last .views-field-view-node a:hover {
+    color:beige;
+    text-decoration:none;
+}
+
+/*Footer*/
+
+#mini-panel-footer .panel-col-last p {
+    text-align:right;
+}
+#mini-panel-footer .panel-col-first p {
+    text-align:left;
+    padding-left:10px;
+}
+
+
+/*Authors*/
+.section-authors .tabs,.section-authors h3, .section-authors h1, .page-user #content-area    {
+  /*display: none;*/
+}
+
+.front #content-area {
+    display: none;
+    
+}
+

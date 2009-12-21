@@ -21,30 +21,6 @@
   */
 ?>
 
-<?php /*echo "<pre>"*/?>
-<?php/* print $view-> result[0]->node_title;*/ ?>
-
-
-   <?php // find an image to display
-        if ($page == 0) {
-        $find= "/src=\"(.+?)\"/i";
-        $text2search= $view->result[0]->node_revisions_body;
-        preg_match($find, $text2search, $matches);
-        if ($matches[1]) {
-            $imgttl = check_plain($title);
-            $found_image = "<a href='$node_url'><img src='".$matches[1]."' style='float: left; padding: 5px;' alt='$imgttl' title='$imgttl' class='teaser'></a>";
-        }
-        else { $found_image = ""; }
-        }
-     ?>
-     <?php
-            $img_name=explode('/', $matches[1]);
-            $imgr = array_reverse($img_name);
-            $img = $imgr[0];
-            $imagecache_path =  file_create_url(file_directory_path().'/'.$img);
-            print theme('imagecache', 'teasr', $img, '', 'Иллюстрация', array('class' => 'teaser'));
-     ?>
-
 <?php
 
 //print l($output." <img src=\"themes/ost2/images/readmore.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));

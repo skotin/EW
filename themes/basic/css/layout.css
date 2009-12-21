@@ -75,10 +75,10 @@
 
 .with-navigation #content,
 .with-navigation .sidebar {
-  margin-top: 40px;        /* Navigation Height */
+  /*margin-top: 40px;        *//* Navigation Height */
 }
 #navigation {
-  height: 40px;            /* Navigation Height */
+  /*height: 40px;            *//* Navigation Height */
 }
 
 /** LAYOUT RULES
@@ -233,9 +233,10 @@
 #footer {
   float: none;
   clear: both;
-     background-color:#15727a;
+     /*background-color:#15727a;*/
+     background-color:#787878;
     color:#fff;
-    padding:5px;
+
     text-align:center;
     margin-top:4em;
 }
@@ -271,16 +272,60 @@
 
 /*Article archive*/
 
-.section-article-archive .panel-col-first {
+.section-category #content .panel-col-first,
+.section-article-archive #content .panel-col-first
+{
     width:70%;
 }
 
-.section-article-archive .panel-col-last {
+.section-category #content .panel-col-last,
+.section-article-archive #content .panel-col-last
+{
+    background-color:beige;
     width:30%;
     font-size:0.8em;
-    background-color:beige;
+    margin-top:-50px;
+
 }
 
-.section-article-archive .panel-col-last .inside {
+
+.section-article-archive #content .panel-col-last .inside {
     margin:10px;
 }
+
+.section-category #content .panel-col-first .inside{
+    padding-left:20px;
+    padding-right:10px;
+}
+.section-category .panel-col-last .inside{
+    padding:10px;
+}
+.section-category .panel-col-last .inside h2,
+.section-article-archive #content .panel-col-last .inside h2
+{
+    font-size:1.4em;
+    color: #aaa;
+    font-weight:bold;
+}
+
+.section-article-archive  .panel-col-last.panel-col-last .views-row {
+    margin-bottom:2em;
+}
+
+.not-front #content h1 {
+    margin:0;
+    padding-left:30px;
+    margin-top:20px;
+    color:#999;
+    background:url(images/arrow_big.gif) no-repeat 0 30%;
+}
+
+.not-front #content-top {
+    padding-top:0;
+}
+
+
+.section-article #content-top {
+    padding-top:1em;
+}
+

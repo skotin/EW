@@ -42,13 +42,10 @@
             $imgr = array_reverse($img_name);
             $img = $imgr[0];
             $imagecache_path =  file_create_url(file_directory_path().'/'.$img);
-            print theme('imagecache', 'teasr', $img, '', 'Иллюстрация', array('class' => 'teaser'));
+            print theme('imagecache', 'teasr1', $img, '', 'Иллюстрация', array('class' => 'teaser1'));
      ?>
-
 <?php
-
-//print l($output." <img src=\"themes/ost2/images/readmore.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));
-print $output;
+ print l($view->result[0]->node_revisions_teaser." <img src=\"themes/basic/css/images/arrow_lit.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));
 
 // print_r($view->field['view_node']);
 // print_r($view);

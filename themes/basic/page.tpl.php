@@ -21,7 +21,7 @@
     <div id="header">
 
       <div id="logo-title">
-	
+
         <?php if (!empty($logo)): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
@@ -57,13 +57,7 @@
     
       <div id="content">
         <div id="content-inner" class="inner column center">
-
-          <?php if ($content_top): ?>
-            <div id="content-top">
-              <?php print $content_top; ?>
-            </div> <!-- /#content-top -->
-          <?php endif; ?>
-
+          <?php print $feed_icons; ?>
           <?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
             <div id="content-header">
 
@@ -79,7 +73,7 @@
 
               <?php print $messages; ?>
 
-              <?php print $help; ?> 
+              <?php print $help; ?>
 
               <?php if ($tabs): ?>
                 <div class="tabs"><?php print $tabs; ?></div>
@@ -87,12 +81,18 @@
 
             </div> <!-- /#content-header -->
           <?php endif; ?>
+          <?php if ($content_top): ?>
+            <div id="content-top">
+              <?php print $content_top; ?>
+            </div> <!-- /#content-top -->
+          <?php endif; ?>
+
 
           <div id="content-area">
             <?php print $content; ?>
           </div> <!-- /#content-area -->
 
-          <?php print $feed_icons; ?>
+
 
           <?php if ($content_bottom): ?>
             <div id="content-bottom">
@@ -104,10 +104,10 @@
         </div> <!-- /content-inner /content -->
 
         <?php if (!empty($primary_links) or !empty($secondary_links)): ?>
-          <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "with-main-menu"; } if (!empty($secondary_links)) { print " with-sub-menu"; } ?>">
-            <?php if (!empty($primary_links)){ print theme('links', $primary_links, array('id' => 'primary', 'class' => 'links main-menu')); } ?>
+         <!-- <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "with-main-menu"; } if (!empty($secondary_links)) { print " with-sub-menu"; } ?>">-->
+            <?php //if (!empty($primary_links)){ print theme('links', $primary_links, array('id' => 'primary', 'class' => 'links main-menu')); } ?>
             <?php if (!empty($secondary_links)){ print theme('links', $secondary_links, array('id' => 'secondary', 'class' => 'links sub-menu')); } ?>
-          </div> <!-- /navigation -->
+           <!--</div> /navigation -->
         <?php endif; ?>
 
         <?php if ($left): ?>

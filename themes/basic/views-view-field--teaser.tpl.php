@@ -45,8 +45,8 @@
             print theme('imagecache', 'teasr', $img, '', 'Иллюстрация', array('class' => 'teaser'));
      ?>
 <?php
- print l($view->result[0]->node_revisions_teaser." <img src=\"themes/basic/css/images/readmore.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));
-
+ //print l($view->result[0]->node_revisions_teaser." <img src=\"themes/basic/css/images/readmore.gif\" class=\"readmore\" />", 'node/'.$view->result[0]->nid,  array('attributes' => array(), 'html'=>TRUE));
+ print $output;
 // print_r($view->field['view_node']);
 // print_r($view);
 //    $view->field['teaser_1']->render($row);
