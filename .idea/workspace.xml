@@ -3,14 +3,26 @@
   <component name="ChangeListManager" verified="true">
     <list default="true" readonly="true" id="f84ac1f5-e551-463b-ab16-8ac327fa1632" name="Default" comment="">
       <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\.idea\inspectionProfiles\profiles_settings.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/basic/page.tpl.php" afterPath="$PROJECT_DIR$/themes/basic/page.tpl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/basic/views-view--Author.tpl.php" afterPath="$PROJECT_DIR$/themes/basic/views-view--Author.tpl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backup/dumper.cfg.php" afterPath="$PROJECT_DIR$/backup/dumper.cfg.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/basic/css/style.css" afterPath="$PROJECT_DIR$/themes/basic/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/basic/views-view-field--short-article-eng--teaser.tpl.php" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-11-05_23-59.sql.gz" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/default/files/pictures/Thumbs.db" afterPath="$PROJECT_DIR$/sites/default/files/pictures/Thumbs.db" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-18_03-58.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-20_22-57.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-21_04-43.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-21_18-02.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-11-05_01-32.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-11-09_08-03.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-10-23_01-28.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\globalt_2009-10-20_03-17.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-18_00-35.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-17_23-45.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-11-16_01-11.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-10-25_22-34.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-21_20-54.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-10-27_23-50.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-10-21_03-29.sql.gz" afterPath="" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-10-20_03-17.sql.gz" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/default/files/images/Thumbs.db" afterPath="$PROJECT_DIR$/sites/default/files/images/Thumbs.db" />
+      <change type="DELETED" beforePath="C:\WORK\website\home\ewr.loc\www\backup\eastwest_2009-12-20_13-08.sql.gz" afterPath="" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
